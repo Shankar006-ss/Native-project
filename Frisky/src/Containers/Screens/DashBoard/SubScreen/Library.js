@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { color,screenText  } from "@/Utility/Constants";
+import { color, screenText } from "@/Utility/Constants";
 
 const Library = () => {
   return (

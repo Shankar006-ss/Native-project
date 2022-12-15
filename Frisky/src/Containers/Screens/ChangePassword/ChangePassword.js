@@ -25,7 +25,6 @@ export default function Change({ navigation }) {
   const [checkValidpass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
-  
 
   //Password field validation
   const checkPasswordValidity = (text) => {

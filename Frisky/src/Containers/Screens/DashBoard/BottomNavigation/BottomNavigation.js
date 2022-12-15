@@ -12,7 +12,6 @@ const Tab = createBottomTabNavigator();
 export default function NavBar() {
   return (
     <Tab.Navigator
-     
       screenOptions={{
         headerShown: false, tabBarStyle: { backgroundColor: color.BACK },
         tabBarLabelStyle: { color: color.WHITE, fontSize: 15 }

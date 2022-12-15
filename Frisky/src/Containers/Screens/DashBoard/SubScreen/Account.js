@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { color,navigations, screenText } from "@/Utility/Constants";
+import { color, navigations, screenText } from "@/Utility/Constants";
 
 export default function Account({ navigation }) {
   return (
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   //logout button styles
   button: {
     alignItems: "center",
-
     marginTop: 300,
     margin: 110,
     padding: 15,

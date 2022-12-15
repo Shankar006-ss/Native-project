@@ -25,31 +25,30 @@ export default function HSB() {
 }
 
 const styles = StyleSheet.create({
-  Over:{
-    backgroundColor: '#171926',
+  Over: {
+    backgroundColor:color.HOME,
   },
+  //header styles
   Center: {
     marginTop: 50,
     margin: 10,
     height: 60,
     paddingStart: 15,
     paddingEnd: 15,
-    backgroundColor: '#171926',
+    backgroundColor:color.HOME,
     alignItems: 'flex-end',
     flexDirection: 'row',
     justifyContent: "space-between",
     color: color.RED,
     fontSize: 20,
   },
-  AppName: {
-    fontSize: 30,
-    color: color.WHITE,
-  },
+  //logo styles
   Icon: {
     height: 40,
     width: 40,
     paddingRight: 10,
   },
+  //icon styles
   Icon1: {
     height: 30,
     width: 30,

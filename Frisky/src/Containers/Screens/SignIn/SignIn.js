@@ -45,7 +45,6 @@ export default function LogForm({ navigation }) {
       setCheckValidPass(true);
     }
   };
-
   //Rendering
   return (
     <View style={globalstyles.container}>

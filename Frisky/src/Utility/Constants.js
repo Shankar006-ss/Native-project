@@ -19,8 +19,8 @@ export const color = {
   BLACK: "#000000",
   SILVER: "#C0C0C0",
   DARK: "#121212",
-  HOME:"#171926",
-  BACK:"#1a1c2b",
+  HOME: "#171926",
+  BACK: "#1a1c2b",
 };
 export const screenText = {
   FORGOT_TEXT: "Forgot Password",
@@ -29,7 +29,7 @@ export const screenText = {
   SAVE_TEXT: "Save Changes",
   COMING_SOON: "Coming soon",
   LOG_OUT: "Log out",
-  LOG_IN:"Login"
+  LOG_IN: "Login"
 };
 export const navigations = {
   HOME_SCREEN: "Main",

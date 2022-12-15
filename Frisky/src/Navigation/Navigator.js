@@ -7,6 +7,7 @@ import MainScreen from "../Screens/DashBoard/MainHome/Main";
 import Forget from "../Screens/ForgetPassword/ForgetPassword";
 import LogForm from "../Screens/SignIn/SignIn";
 import Reg from "../Screens/SignUp/SignUp";
+
 const Stack = createStackNavigator();
 function SplashScreenImage({ navigation }) {
   setTimeout(() => {

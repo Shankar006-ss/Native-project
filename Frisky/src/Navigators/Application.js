@@ -4,26 +4,24 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { StartupContainer } from '@/Containers'
 import { useTheme } from '@/Hooks'
-import MainNavigator from './Main'
 import { navigationRef } from './utils'
 import LogForm from '@/Containers/Screens/SignIn/SignIn'
 import SignUp from '@/Containers/Screens/SignUp/SignUp'
-import { ForceTouchGesture } from 'react-native-gesture-handler/lib/typescript/handlers/gestures/forceTouchGesture'
 import Forget from '@/Containers/Screens/ForgetPassword/ForgetPassword'
 import MainScreen from '@/Containers/Screens/DashBoard/MainHome/Main'
 import Change from '@/Containers/Screens/ChangePassword/ChangePassword'
 import { useEffect } from 'react'
 import SplashScreen from 'react-native-splash-screen'
-const Stack = createStackNavigator()
 
+const Stack = createStackNavigator()
 // @refresh reset
 const ApplicationNavigator = () => {
   const { Layout, darkMode, NavigationTheme } = useTheme()
   const { colors } = NavigationTheme
-  
-  useEffect(()=>{
-    setTimeout(()=>SplashScreen.hide(),2000)
-  },[])
+
+  useEffect(() => {
+    setTimeout(() => SplashScreen.hide(), 2000)
+  }, [])
 
   return (
     <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
