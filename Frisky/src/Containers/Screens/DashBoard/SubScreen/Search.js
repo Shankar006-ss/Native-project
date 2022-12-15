@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   //coming soon text styles
   text: {
     color: color.WHITE,
-    fontSize: 50,
+    fontSize: 30,
   },
 });
 

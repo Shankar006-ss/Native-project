@@ -18,7 +18,7 @@ export const globalstyles = StyleSheet.create({
   header: {
     color: color.WHITE,
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 28,
   },
   //all screen logo image styles
   image: {
@@ -42,8 +42,8 @@ export const globalstyles = StyleSheet.create({
   },
   //bottom icon styles
   bottom: {
-    height: 30,
-    width: 30,
+    height: 20,
+    width: 20,
   },
 
 });

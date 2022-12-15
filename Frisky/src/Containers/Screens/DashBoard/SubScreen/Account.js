@@ -23,17 +23,19 @@ const styles = StyleSheet.create({
     backgroundColor: color.HOME,
     height: "100%",
     width: "100%",
+    
+   
   },
   //logout button text styles
   buttontext: {
     color: color.WHITE,
-    fontSize: 40,
-    alignItems: "flex-end",
+    fontSize: 30,
+    
   },
   //logout button styles
   button: {
-    alignItems: "center",
-    marginTop: 300,
+   
+    marginTop: 250,
     margin: 110,
     padding: 15,
     borderRadius: 25,

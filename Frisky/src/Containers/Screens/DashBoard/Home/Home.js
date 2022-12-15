@@ -21,6 +21,7 @@ const ListItem = ({ item }) => {
         style={styles.itemPhoto}
         resizeMode="cover"
       />
+      
       <Text style={styles.itemText}>{item.text}</Text>
     </View>
   );
@@ -123,6 +124,9 @@ const SECTIONS = [
       },
     ],
   },
+  
+    
+
 ];
 
 const styles = StyleSheet.create({
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     fontSize: 25,
     color: color.WHITE,
-    marginTop: 5,
+    marginTop: 20,
     marginBottom: 5,
     alignItems: "center",
     textAlign: "center",
@@ -144,18 +148,19 @@ const styles = StyleSheet.create({
   //all item styles
   item: {
     margin: 10,
+    
   },
   //all item images styles
   itemPhoto: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     borderRadius: 10,
   },
   //all images text styles
   itemText: {
     color: color.SILVER,
     marginTop: 5,
-    fontSize: 20,
+    fontSize: 13,
     textAlign: "center",
   },
 });

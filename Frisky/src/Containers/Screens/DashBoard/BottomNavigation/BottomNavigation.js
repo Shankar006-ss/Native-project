@@ -13,8 +13,8 @@ export default function NavBar() {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerShown: false, tabBarStyle: { backgroundColor: color.BACK },
-        tabBarLabelStyle: { color: color.WHITE, fontSize: 15 }
+        headerShown: false, tabBarStyle: { backgroundColor: color.BACK},
+        tabBarLabelStyle: { color: color.WHITE, fontSize: 12 }
       }}
     >
       <Tab.Screen //buttom home screen navigation

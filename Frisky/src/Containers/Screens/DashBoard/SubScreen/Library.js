@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
   //library text styles
   text: {
-    fontSize: 50,
+    fontSize: 30,
     color: color.WHITE,
   },
 });
