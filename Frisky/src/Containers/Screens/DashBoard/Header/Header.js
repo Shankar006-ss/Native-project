@@ -1,50 +1,57 @@
-import React from "react";
-import { Image, StatusBar, StyleSheet, View ,Text} from "react-native";
-import { color} from "@/Utility/Constants";
+import { Image, StatusBar, StyleSheet, View } from 'react-native'
+import React from 'react'
+import { color } from '../../../../Utility/Constants'
 
-
-const HSB = () => (
-  <View>
-    <StatusBar
-      translucent
-      backgroundColor={color.BLACK}
-      barStyle="light-content"
-    />
-     <View style={styles.header}>
-     {/* <Image
-              style={styles.logo}
-              source={require("../../../../Image/home.png")}
-            /> */}
-            <Image
-              style={styles.icon}
-              source={require("../../../../Image/bell.png")}
-            />
-     </View>
-    
-  </View>
-);
+export default function HSB() {
+  return (
+    <View style={styles.Over}>
+      <StatusBar
+        translucent
+        backgroundColor={color.BLACK}
+        barStyle="light-content"
+      />
+      <View style={styles.Center}>
+        <Image
+          style={styles.Icon}
+          source={require('../../../../Image/LogoMenu.png')}
+        />
+        <Image
+          style={styles.Icon1}
+          source={require('../../../../Image/bell.png')}
+        />
+      </View>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
-  // home header styles
-  header: {
-    alignItems:"flex-end",
-    flexDirection: "row",
-    justifyContent:"space-between",
-    marginTop: 20,
-    backgroundColor: color.HOME,
+  Over:{
+    backgroundColor: '#171926',
   },
-  //logo image styles
-  logo:{
-    margin:20,
-    height:40,
-    width:40
+  Center: {
+    marginTop: 50,
+    margin: 10,
+    height: 60,
+    paddingStart: 15,
+    paddingEnd: 15,
+    backgroundColor: '#171926',
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: "space-between",
+    color: color.RED,
+    fontSize: 20,
   },
-  icon:{
-    margin:20,
-    height:40,
-    width:40
+  AppName: {
+    fontSize: 30,
+    color: color.WHITE,
   },
-  
-});
-
-export default HSB;
+  Icon: {
+    height: 40,
+    width: 40,
+    paddingRight: 10,
+  },
+  Icon1: {
+    height: 30,
+    width: 30,
+  }
+})

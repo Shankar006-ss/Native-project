@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import {
   Image,
   ImageBackground,
@@ -78,6 +78,7 @@ export default function Forget({ navigation }) {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   //forgotpassword screen total styles
   header: {

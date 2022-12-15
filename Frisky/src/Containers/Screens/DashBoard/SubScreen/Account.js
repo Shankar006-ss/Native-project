@@ -20,7 +20,7 @@ export default function Account({ navigation }) {
 const styles = StyleSheet.create({
   //parent styles
   container: {
-    backgroundColor: color.BLACK,
+    backgroundColor: color.HOME,
     height: "100%",
     width: "100%",
   },

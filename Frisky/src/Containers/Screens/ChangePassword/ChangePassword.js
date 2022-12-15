@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import {
   Image,
   ImageBackground,
@@ -25,7 +25,8 @@ export default function Change({ navigation }) {
   const [checkValidpass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
-  const [checkbutton, setCheckbutton] = useState(true)
+  
+
   //Password field validation
   const checkPasswordValidity = (text) => {
     setPassword(text);
@@ -94,19 +95,16 @@ export default function Change({ navigation }) {
           ) : null}
         </View>
         <View>
-
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate(navigations.SIGNIN_SCREEN)}
             disabled={(checkValidpass == true) || (checkValidConfirm == true) ||
               (password == '') || (confirm == '')}
           >
-
             <Text style={globalstyles.buttonText}>
               {screenText.SAVE_TEXT}
             </Text>
           </TouchableOpacity>
-
         </View>
       </View>
     </ImageBackground>
