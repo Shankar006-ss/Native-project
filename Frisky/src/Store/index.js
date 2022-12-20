@@ -14,10 +14,19 @@ import {
 
 import { api } from '@/Services/api'
 import theme from './Theme'
+import LogForm from '@/Containers/Screens/SignIn/SignIn'
+import SignUp from '@/Containers/Screens/SignUp/SignUp'
+import Home from '@/Containers/Screens/DashBoard/Home/Home'
+import MainScreen from '@/Containers/Screens/DashBoard/MainHome/Main'
+import Change from '@/Containers/Screens/ChangePassword/ChangePassword'
+import Forget from '@/Containers/Screens/ForgetPassword/ForgetPassword'
+import { SigninAction } from '@/Services/modules/SigninAction'
 
 const reducers = combineReducers({
   theme,
   api: api.reducer,
+  [SigninAction.reducer]:SigninAction.reducer,
+  
 })
 
 const persistConfig = {
@@ -35,7 +44,8 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(api.middleware)
+    }).concat(
+      SigninAction.middleware)
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default

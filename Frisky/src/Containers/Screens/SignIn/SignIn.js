@@ -19,6 +19,8 @@ import {
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
+import { useCreatePostMutation } from "@/Services/modules/SigninAction";
+
 
 export default function LogForm({ navigation }) {
   //Initialization
@@ -26,6 +28,20 @@ export default function LogForm({ navigation }) {
   const [password, setPassword] = useState("");
   const [checkValidEmail, setCheckValidEmail] = useState(false);
   const [checkValidPass, setCheckValidPass] = useState(false);
+
+
+  //Api response
+let grandType={
+  Email:email,
+  password:password
+};
+const[CreatePost]=useCreatePostMutation(grandType);
+const onSubmit=()=>{
+  CreatePost(grandType).then((response) => {
+console.log(response)
+  })
+}
+
 
   //check email validation
   const handleCheckEmail = (text) => {
@@ -91,7 +107,8 @@ export default function LogForm({ navigation }) {
           <View>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+             // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+             onPress={() =>onSubmit()}
               disabled={(checkValidEmail == true) || (checkValidPass == true) ||
                 (password == "") || (email == "")}
             >
