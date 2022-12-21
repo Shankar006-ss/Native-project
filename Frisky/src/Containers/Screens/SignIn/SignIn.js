@@ -39,6 +39,13 @@ const[CreatePost]=useCreatePostMutation(grandType);
 const onSubmit=()=>{
   CreatePost(grandType).then((response) => {
 console.log(response)
+
+if(response.data.Message=="Login Successfully"){
+  navigation.navigate(navigations.HOME_SCREEN)
+}
+else{
+  alert("Invalid data")
+}
   })
 }
 
@@ -109,8 +116,8 @@ console.log(response)
               style={styles.button}
              // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
              onPress={() =>onSubmit()}
-              disabled={(checkValidEmail == true) || (checkValidPass == true) ||
-                (password == "") || (email == "")}
+              // disabled={(checkValidEmail == true) || (checkValidPass == true) ||
+              //   (password == "") || (email == "")}
             >
               <Text style={globalstyles.buttonText}>{screenText.LOG_IN}
               </Text>

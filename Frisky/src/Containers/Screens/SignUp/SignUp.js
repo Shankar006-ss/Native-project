@@ -18,6 +18,7 @@ import {
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
+import { useCreatePostSignUpMutation } from "@/Services/modules/SigninAction";
 
 export default function SignUp({ navigation }) {
   //Intialization
@@ -29,6 +30,35 @@ export default function SignUp({ navigation }) {
   const [checkValidPass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
+
+  let grand={
+    Name:name,
+    Email:email,
+    Password:password,
+    ConfirmPassword:confirm,
+  };
+  const [CreatePostSignUp] = useCreatePostSignUpMutation(grand);
+  const onSubmit = () => {
+    CreatePostSignUp(grand).then((response) => {
+      console.log(response)
+     
+      if(response.data.Message=="Invalid email"){
+        alert("Invalid email id")
+      }
+      else if(response.data.Message=="Name is notfill"){
+        alert("Name is required")
+      }
+      else if(response.data.Message=="Record SuccessFully Saved")
+      {
+        navigation.navigate(navigations.HOME_SCREEN)
+      }
+      else 
+      {
+        alert("Invalid data")
+      }
+      
+    })
+  }
 
   //name field validation
   const NameValid = (text) => {
@@ -133,10 +163,11 @@ export default function SignUp({ navigation }) {
           ) : null}
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
-            disabled={(checkValidEmail == true) || (checkValidPass == true)
-              || (password == "") || (email == "") || (checkValidName == true)
-              || (name == "") || (checkValidConfirm == true) || (confirm == "")}
+            onPress={() => onSubmit()}
+          // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+          // disabled={(checkValidEmail == true) || (checkValidPass == true)
+          //   || (password == "") || (email == "") || (checkValidName == true)
+          //   || (name == "") || (checkValidConfirm == true) || (confirm == "")}
           >
             <Text style={globalstyles.buttonText}>{Signup.SIGNUP}
             </Text>

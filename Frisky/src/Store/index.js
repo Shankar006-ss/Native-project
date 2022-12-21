@@ -20,12 +20,15 @@ import Home from '@/Containers/Screens/DashBoard/Home/Home'
 import MainScreen from '@/Containers/Screens/DashBoard/MainHome/Main'
 import Change from '@/Containers/Screens/ChangePassword/ChangePassword'
 import Forget from '@/Containers/Screens/ForgetPassword/ForgetPassword'
-import { SigninAction } from '@/Services/modules/SigninAction'
+import { SigninAction} from '@/Services/modules/SigninAction'
+
+
 
 const reducers = combineReducers({
   theme,
   api: api.reducer,
   [SigninAction.reducer]:SigninAction.reducer,
+  
   
 })
 
@@ -45,7 +48,9 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(
-      SigninAction.middleware)
+      SigninAction.middleware,
+      // SignUpAction.middleware)
+    )
 
     if (__DEV__ && !process.env.JEST_WORKER_ID) {
       const createDebugger = require('redux-flipper').default
