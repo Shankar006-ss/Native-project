@@ -1,22 +1,39 @@
-import { Image, StatusBar, StyleSheet, View } from 'react-native'
+import { Image, StatusBar, StyleSheet, View, Appearance } from 'react-native'
 import React from 'react'
 import { color } from '../../../../Utility/Constants'
+import { useTheme } from '@/Hooks';
+import { setDefaultTheme } from '@/Store/Theme'
+import { useEffect } from "react";
 
 export default function HSB() {
+
+  const { Common, Fonts, Gutters} = useTheme()
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+  
+  useEffect(() => {
+    init()
+  })
   return (
-    <View style={styles.Over}>
+    <View style={Common.Over}>
       <StatusBar
         translucent
         backgroundColor={color.BLACK}
         barStyle="light-content"
       />
-      <View style={styles.Center}>
+      <View style={[Gutters.Center,Fonts.Center,Common.Center]}>
         <Image
-          style={styles.Icon}
+          style={Gutters.Icon}
           source={require('../../../../Image/LogoMenu.png')}
         />
         <Image
-          style={styles.Icon1}
+          style={Gutters.Icon1}
           source={require('../../../../Image/bell.png')}
         />
       </View>
@@ -24,33 +41,3 @@ export default function HSB() {
   )
 }
 
-const styles = StyleSheet.create({
-  Over: {
-    backgroundColor:color.HOME,
-  },
-  //header styles
-  Center: {
-    marginTop: 50,
-    margin: 10,
-    height: 60,
-    paddingStart: 15,
-    paddingEnd: 15,
-    backgroundColor:color.HOME,
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    justifyContent: "space-between",
-    color: color.RED,
-    fontSize: 20,
-  },
-  //logo styles
-  Icon: {
-    height: 40,
-    width: 40,
-    paddingRight: 10,
-  },
-  //icon styles
-  Icon1: {
-    height: 30,
-    width: 30,
-  }
-})

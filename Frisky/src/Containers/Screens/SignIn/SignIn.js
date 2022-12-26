@@ -8,17 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Appearance
 } from "react-native";
 import {
-  ErrorMessage,
-  Signup,
-  placeholder,
-  color,
   navigations,
-  screenText
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
+import { useTranslation } from "react-i18next";
+import { useTheme } from '@/Hooks';
+import { useEffect } from "react";
+import { setDefaultTheme } from '@/Store/Theme'
+
 
 export default function LogForm({ navigation }) {
   //Initialization
@@ -26,7 +27,27 @@ export default function LogForm({ navigation }) {
   const [password, setPassword] = useState("");
   const [checkValidEmail, setCheckValidEmail] = useState(false);
   const [checkValidPass, setCheckValidPass] = useState(false);
+  const [t]=useTranslation()
+  const { Common, Fonts, Gutters,Images} = useTheme()
 
+  
+  
+//Themes
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+
+  useEffect(() => {
+    init()
+  })
+
+  
+  
   //check email validation
   const handleCheckEmail = (text) => {
     setEmail(text);
@@ -51,11 +72,12 @@ export default function LogForm({ navigation }) {
       <StatusBar translucent backgroundColor="black" barStyle="light-content" />
       <ImageBackground
         source={require("../../../Image/background.jpg")}
-        style={globalstyles.imageBackground}
+        style={[Gutters.imageBackground, Common.imageBackground,Images.imageBackground]}
       >
-        <View style={styles.itemContainer}>
+        <View style={[Gutters.itemContainer]}>
           <View>
-            <Text style={globalstyles.header}>{Signup.WELCOME}</Text>
+           
+            <Text style={[Common.header,Fonts.header]}>{t('Signup.WELCOME')}</Text>
           </View>
           <View>
             <Image
@@ -63,54 +85,54 @@ export default function LogForm({ navigation }) {
               source={require("../../../Image/music-note.png")}
             />
           </View>
-          <View style={styles.inputText1}>
+          <View style={[Gutters.inputText1]}>
             <TextInput
-              style={styles.textInput}
-              placeholder={placeholder.EMAIL}
+              style={[Gutters.textInput,Common.textInput,Fonts.textInput]}
+              placeholder={t('placeholder.EMAIL')}
               value={email}
               onChangeText={handleCheckEmail}
             />
           </View>
           <View>
             {checkValidEmail ? (
-              <Text style={globalstyles.Errormsg}>{ErrorMessage.EMAIL}</Text>
+              <Text style={globalstyles.Errormsg}>{t('ErrorMessage.EMAIL')}</Text>
             ) : null}
           </View>
-          <View style={styles.inputText1}>
+          <View style={Gutters.inputText1}>
             <TextInput
-              style={styles.textInput}
-              placeholder={placeholder.PASSWORD}
+              style={[Gutters.textInput,Common.textInput,Fonts.textInput]}
+              placeholder={t('placeholder.PASSWORD')}
               value={password}
               onChangeText={(text) => checkPasswordValidity(text)}
               secureTextEntry={true}
             />
             {checkValidPass ? (
-              <Text style={globalstyles.Errormsg}>{ErrorMessage.PASSWORD}</Text>
+              <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
             ) : null}
           </View>
           <View>
             <TouchableOpacity
-              style={styles.button}
+              style={[Gutters.button,Common.button]}
               onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
               disabled={(checkValidEmail == true) || (checkValidPass == true) ||
                 (password == "") || (email == "")}
             >
-              <Text style={globalstyles.buttonText}>{screenText.LOG_IN}
+              <Text style={globalstyles.buttonText}>{t('screenText.LOG_IN')}
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.footer}>
+          <View style={Gutters.footer}>
             <Text
               onPress={() => navigation.navigate(navigations.FORGOT_SCREEN)}
-              style={styles.footer1}
+              style={[Gutters.footer1,Common.footer1,Fonts.footer1]}
             >
-              {Signup.FORGOT_PASSWORD}
+              {t('Signup.FORGOT_PASSWORD')}
             </Text>
             <Text
               onPress={() => navigation.navigate(navigations.SIGNUP_SCREEN)}
-              style={styles.footer2}
+              style={[Gutters.footer2,Common.footer2,Fonts.footer2]}
             >
-              {Signup.CREATE_ACCOUNT}
+              {t('Signup.CREATE_ACCOUNT')}
             </Text>
           </View>
         </View>
@@ -119,58 +141,3 @@ export default function LogForm({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  //screen total items styles
-  itemContainer: {
-    alignItems: "center",
-    marginTop: 80,
-    margin: 50,
-  },
-  //inputtext styles
-  inputText1: {
-    marginTop: 40,
-  },
-  //footer text styles
-  footer: {
-    paddingTop: 25,
-    alignItems: "center",
-  },
-  //forgotpassword text styles
-  footer1: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: color.WHITE,
-    paddingTop: 30,
-  },
-  //create a new account text styles
-  footer2: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: color.WHITE,
-    paddingTop: 10,
-  },
-  //email and password textinput styles
-  textInput: {
-    fontSize: 20,
-    height: 60,
-    color: color.BLACK,
-    backgroundColor: color.WHITE,
-    borderRadius: 25,
-    borderLeftWidth: 15,
-    borderLeftColor: color.BLUE,
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 30,
-    width: 300,
-  },
-  //login button styles
-  button: {
-    alignItems: "center",
-    paddingTop: 10,
-    backgroundColor: color.BLUE,
-    borderRadius: 25,
-    marginTop: 50,
-    width: 300,
-    height: 60,
-  },
-});

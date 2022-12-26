@@ -8,19 +8,33 @@
 /**
  * Colors
  */
-export const Colors = {
-  // Example colors:
-  transparent: 'rgba(0,0,0,0)',
-  inputBackground: '#FFFFFF',
-  white: '#ffffff',
-  text: '#212529',
-  primary: '#E14032',
-  success: '#28a745',
-  error: '#dc3545',
-}
+// export const Colors = {
+//   // Example colors:
+//   transparent: 'rgba(0,0,0,0)',
+//   inputBackground: '#FFFFFF',
+//   white: '#ffffff',
+//   text: '#212529',
+//   primary: '#E14032',
+//   success: '#28a745',
+//   error: '#dc3545',
+// }
+
+export const color = {
+  WHITE: "#fff",
+  BLUE: "#00BFFF",
+  RED: "#FF0000",
+  BLACK: "#000000",
+  SILVER: "#C0C0C0",
+  DARK: "#121212",
+  HOME: "#171926",
+  BACK: "#1a1c2b",
+  VIOLET:"#7B68EE",
+  AQUA:"#1E90FF",
+  SNOW:"#F5F5F5"
+};
 
 export const NavigationColors = {
-  primary: Colors.primary,
+  primary: color.primary,
 }
 
 /**
@@ -47,8 +61,9 @@ export const MetricsSizes = {
 }
 
 export default {
-  Colors,
+  color,
   NavigationColors,
   FontSize,
   MetricsSizes,
+  
 }

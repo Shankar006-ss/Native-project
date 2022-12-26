@@ -1,33 +1,20 @@
-/**
- * This file defines the base application styles.
- *
- * Use it to define generic component styles (e.g. the default text styles, default button styles...).
- */
-import { StyleSheet } from 'react-native'
-
-
-/**
- *
- * @param Theme can be spread like {Colors, NavigationColors, Gutters, Layout, Common, ...args}
- * @return {*}
- */
+import { StyleSheet } from "react-native"
 export default function ({ color, ...args }) {
   return StyleSheet.create({
     //Signin page
     header: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     footer2: {
       color: color.WHITE,
     },
     button: {
-      backgroundColor: color.AQUA,
-
+      backgroundColor: color.BLUE,
     },
     textInput: {
       color: color.BLACK,
       backgroundColor: color.WHITE,
-      borderLeftColor: color.AQUA,
+      borderLeftColor: color.BLUE,
     },
     footer1: {
       color: color.WHITE,
@@ -37,45 +24,46 @@ export default function ({ color, ...args }) {
       color: color.SILVER,
     },
     sectionHeader: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     container: {
-      backgroundColor: color.WHITE,
+      backgroundColor: color.HOME,
     },
     //Header page
     Over: {
-      backgroundColor: color.AQUA,
+      backgroundColor: color.HOME,
     },
     //header styles
     Center: {
-      backgroundColor: color.AQUA,
-   
+      backgroundColor: color.HOME,
+      color: color.RED,
     },
+    //bottom page
     back_container: {
-      backgroundColor: color.AQUA
+      backgroundColor: color.BACK
     },
     // signup style
     //name,email,password and confirmpassword textinput styles
     signup_textInput: {
       color: color.BLACK,
-      borderLeftColor: color.AQUA,
+      borderLeftColor: color.BLUE,
       backgroundColor: color.WHITE,
     },
     //signup button styles
     signup_button: {
-      backgroundColor: color.AQUA,
+      backgroundColor: color.BLUE,
     },
     //login user text styles
     signup_footer: {
       color: color.WHITE,
     },
-    //Account styles
+    //subscreen styles
     sub_container: {
-      backgroundColor: color.WHITE,
+      backgroundColor: color.HOME,
     },
     //logout button text styles
     buttontext: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     //forgotpassword title styles
     forgot_title: {
@@ -83,25 +71,26 @@ export default function ({ color, ...args }) {
     },
     //email textinput styles
     forgot_textInput: {
-      borderColor: color.AQUA,
+      borderColor: color.BLUE,
       backgroundColor: color.WHITE,
     },
     //send button styles
     forgot_button: {
-      backgroundColor: color.AQUA,
+      backgroundColor: color.BLUE,
     },
     //change password title styles
     change_title: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     //password and confirmpassword textinput styles
     change_textInput: {
-      borderColor: color.AQUA,
+      borderColor: color.BLUE,
       backgroundColor: color.WHITE,
     },
     //savechanges button styles
     change_button: {
-      backgroundColor: color.AQUA,
-    },
+      backgroundColor: color.BLUE,
+    }
+
   })
 }

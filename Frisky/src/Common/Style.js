@@ -8,12 +8,8 @@ export const globalstyles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-  },
-  //all screen imagebackground styles
-  imageBackground: {
-    height: "100%",
-    width: "100%",
-  },
+    },
+  
   //all screen header styles
   header: {
     color: color.WHITE,
@@ -24,7 +20,9 @@ export const globalstyles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
-    marginTop: 30,
+    marginTop: 40,
+    alignSelf:"center"
+
   },
   //all screen button text styles
   buttonText: {

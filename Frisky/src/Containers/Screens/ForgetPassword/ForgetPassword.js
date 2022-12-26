@@ -8,21 +8,39 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Appearance
 } from "react-native";
 import {
   color,
-  ErrorMessage,
   navigations,
-  placeholder,
-  screenText,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
+import { useTranslation } from "react-i18next";
+import { useTheme } from '@/Hooks';
+import { useEffect } from "react";
+import { setDefaultTheme } from '@/Store/Theme'
 
 export default function Forget({ navigation }) {
   //Intialization
   const [email, setEmail] = useState("");
   const [checkValidEmail, setCheckValidEmail] = useState(false);
+  const[t]=useTranslation()
+  const { Common, Fonts, Gutters,Images} = useTheme()
+
+  //Themes
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+
+  useEffect(() => {
+    init()
+  })
 
   //Email field validation
   const handleCheckEmail = (text) => {
@@ -39,9 +57,9 @@ export default function Forget({ navigation }) {
       <StatusBar translucent backgroundColor="black" barStyle="light-content" />
       <ImageBackground
         source={require("../../../Image/background.jpg")}
-        style={globalstyles.imageBackground}
+        style={[Gutters.imageBackground, Common.imageBackground,Images.ImageBackground]}
       >
-        <View style={styles.header}>
+        <View style={[Gutters.forgot_header,Fonts.forgot_header]}>
           <View>
             <Image
               style={globalstyles.image}
@@ -49,27 +67,27 @@ export default function Forget({ navigation }) {
             />
           </View>
           <View>
-            <Text style={styles.title}>{screenText.FORGOT_TEXT}</Text>
+            <Text style={[Gutters.forgot_title,Fonts.forgot_title,Common.forgot_title]}>{t('screenText.FORGOT_TEXT')}</Text>
           </View>
-          <View style={styles.input}>
+          <View style={Gutters.forgot_input}>
             <TextInput
-              style={styles.textInput}
-              placeholder={placeholder.EMAIL}
+              style={[Gutters.forgot_textInput,Fonts.forgot_textInput,Common.forgot_textInput]}
+              placeholder={t('placeholder.EMAIL')}
               maxLength={30}
               underlineColorAndroid={"transparent"}
               value={email}
               onChangeText={handleCheckEmail}
             />
             {checkValidEmail ? (
-              <Text style={globalstyles.Errormsg}>{ErrorMessage.EMAIL}</Text>
+              <Text style={globalstyles.Errormsg}>{t('ErrorMessage.EMAIL')}</Text>
             ) : null}
             <TouchableOpacity
-              style={styles.button}
+              style={[Gutters.forgot_button,Fonts.forgot_button,Common.forgot_button]}
               onPress={() => navigation.navigate(navigations.CHANGE_SCREEN)}
               disabled={(checkValidEmail == true) || (email == "")}
             >
               <Text style={globalstyles.buttonText}>
-                {screenText.SEND_TEXT}
+                {t('screenText.SEND_TEXT')}
               </Text>
             </TouchableOpacity>
           </View>
@@ -80,43 +98,5 @@ export default function Forget({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  //forgotpassword screen total styles
-  header: {
-    alignItems: "center",
-    marginTop: 100,
-    margin: 50,
-  },
-  //forgotpassword title styles
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    marginTop: 30,
-    color: color.WHITE,
-  },
-  //inputtext styles
-  input: {
-    margin: 10,
-  },
-  //email textinput styles
-  textInput: {
-    fontSize: 20,
-    height: 60,
-    marginLeft: 5,
-    borderColor: color.BLUE,
-    borderLeftWidth: 15,
-    paddingLeft: 20,
-    borderRadius: 25,
-    backgroundColor: color.WHITE,
-    marginTop: 50,
-    width: 300,
-  },
-  //send button styles
-  button: {
-    alignItems: "center",
-    padding: 10,
-    marginTop: 50,
-    backgroundColor: color.BLUE,
-    borderRadius: 25,
-    height: 60,
-  },
+  
 });

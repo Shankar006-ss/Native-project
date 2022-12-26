@@ -1,4 +1,5 @@
-import React from "react";
+import * as React from 'react';
+import { useEffect } from "react";
 import {
   FlatList,
   Image,
@@ -7,28 +8,63 @@ import {
   StyleSheet,
   Text,
   View,
-  StatusBar
+  StatusBar,
+  
 } from "react-native";
 import { color,homescreen } from "@/Utility/Constants";
+import { useTranslation } from 'react-i18next';
+import { useTheme } from '@/Hooks';
+import { setDefaultTheme } from '@/Store/Theme';
+import { Appearance } from 'react-native';
 
+//Themes
 const ListItem = ({ item }) => {
+  const { Common, Fonts, Gutters} = useTheme()
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+  
+  useEffect(() => {
+    init()
+  })
+  const{t}=useTranslation()
   return (
-    <View style={styles.item}>
+    <View style={Gutters.item}>
       <Image
         source={{
           uri: item.uri,
         }}
-        style={styles.itemPhoto}
+        style={Gutters.itemPhoto}
         resizeMode="cover"
       />
       
-      <Text style={styles.itemText}>{item.text}</Text>
+      <Text style={[Fonts.itemText, Common.itemText ]}>{item.text}</Text>
     </View>
   );
 };
+
 export default () => {
+  const { Common, Fonts, Gutters} = useTheme()
+//Themes
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+  
+  useEffect(() => {
+    init()
+  })
   return (
-    <View style={styles.container}>
+    <View style={[Gutters.container, Common.container]}>
       <StatusBar style="light" />
       <SafeAreaView style={{ flex: 1 }}>
         <SectionList
@@ -37,7 +73,7 @@ export default () => {
           sections={SECTIONS}
           renderSectionHeader={({ section }) => (
             <>
-              <Text style={styles.sectionHeader}>{section.title}</Text>
+              <Text style={[Gutters.sectionHeader, Fonts.sectionHeader, Common.sectionHeader]}>{section.title}</Text>
               {section.horizontal ? (
                 <FlatList
                   horizontal
@@ -62,7 +98,7 @@ export default () => {
 
 const SECTIONS = [
   {
-    title: homescreen.TRENDING,
+    title:homescreen.TRENDING,
     horizontal: true,
     data: [
       {
@@ -130,37 +166,6 @@ const SECTIONS = [
 ];
 
 const styles = StyleSheet.create({
-  //parent styles
-  container: {
-    flex: 1,
-    backgroundColor: '#171926',
-  },
-  //section header styles
-  sectionHeader: {
-    fontWeight: "800",
-    fontSize: 25,
-    color: color.WHITE,
-    marginTop: 20,
-    marginBottom: 5,
-    alignItems: "center",
-    textAlign: "center",
-  },
-  //all item styles
-  item: {
-    margin: 10,
-    
-  },
-  //all item images styles
-  itemPhoto: {
-    width: 150,
-    height: 150,
-    borderRadius: 10,
-  },
-  //all images text styles
-  itemText: {
-    color: color.SILVER,
-    marginTop: 5,
-    fontSize: 13,
-    textAlign: "center",
-  },
+  
+  
 });

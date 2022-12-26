@@ -6142,6 +6142,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.0.7.tgz"
   "version" "0.0.7"
 
+"react-native-localize@^2.2.4":
+  "integrity" "sha512-gVmbyAEQQnBQ8vKlAQchFfIISeId3qT6Lc7LHmKF39nsYWX9KN4PHuG6Hk+7gduMI6IHKeZGKcLsOdh6wvN6cg=="
+  "resolved" "https://registry.npmjs.org/react-native-localize/-/react-native-localize-2.2.4.tgz"
+  "version" "2.2.4"
+
 "react-native-paper@^5.0.1":
   "integrity" "sha512-JY4XQktCCoDWLbZsNfUNsGSJ9Zf7HvpXfwif4aQT1igW+WTYWhWCQsAXsnisd5bMiw9uNwSQCbLkckvuI2fWBg=="
   "resolved" "https://registry.npmjs.org/react-native-paper/-/react-native-paper-5.0.1.tgz"

@@ -5,6 +5,10 @@
  */
 export default function () {
   return {
-    logo: require('../Image/launch_screen.png'),
+    
+    backgroundimg: {
+        uri: "../../../Image/light_back.jpg"
+      }
+
   }
 }

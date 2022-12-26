@@ -8,16 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Appearance
 } from "react-native";
 import { globalstyles } from "@/Common/Style";
 import {
   color,
-  ErrorMessage,
   navigations,
-  placeholder,
-  screenText,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
+import { useTranslation } from "react-i18next";
+import { useTheme } from '@/Hooks';
+import { useEffect } from "react";
+import { setDefaultTheme } from '@/Store/Theme'
 
 export default function Change({ navigation }) {
   //Intialization
@@ -25,6 +27,22 @@ export default function Change({ navigation }) {
   const [checkValidpass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
+  const [t]=useTranslation()
+  const { Common, Fonts, Gutters} = useTheme()
+
+  //Themes
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+
+  useEffect(() => {
+    init()
+  })
 
   //Password field validation
   const checkPasswordValidity = (text) => {
@@ -48,7 +66,7 @@ export default function Change({ navigation }) {
   return (
     <ImageBackground
       source={require("../../../Image/background.jpg")}
-      style={globalstyles.imageBackground}
+      style={[Gutters.imageBackground, Common.imageBackground]}
       resizeMode="cover"
     >
       <View style={globalstyles.container}>
@@ -63,11 +81,11 @@ export default function Change({ navigation }) {
             source={require("../../../Image/music-note.png")}
           />
         </View>
-        <Text style={styles.title}>{screenText.CHANGE_TEXT}</Text>
-        <View style={styles.inputtext1}>
+        <Text style={[Gutters.change_title,Common.change_title]}>{t('screenText.CHANGE_TEXT')}</Text>
+        <View style={Gutters.inputtext1}>
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.NEW}
+            style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
+            placeholder={t('placeholder.NEW')}
             underlineColorAndroid={"transparent"}
             value={password}
             maxLength={16}
@@ -75,13 +93,13 @@ export default function Change({ navigation }) {
             secureTextEntry={true}
           />
           {checkValidpass ? (
-            <Text style={globalstyles.Errormsg}>{ErrorMessage.PASSWORD}</Text>
+            <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
           ) : null}
         </View>
-        <View style={styles.inputtext2}>
+        <View style={Gutters.change_inputtext2}>
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.CONFIRM}
+            style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
+            placeholder={t('placeholder.CONFIRM')}
             maxLength={16}
             onChangeText={(text) => checkConfirmPasswordValidity(text)}
             underlineColorAndroid={"transparent"}
@@ -89,19 +107,19 @@ export default function Change({ navigation }) {
           />
           {checkValidConfirm ? (
             <Text style={globalstyles.Errormsg}>
-              {ErrorMessage.CONFIRMPASSWORD}
+              {t('ErrorMessage.CONFIRMPASSWORD')}
             </Text>
           ) : null}
         </View>
         <View>
           <TouchableOpacity
-            style={styles.button}
+            style={[Gutters.change_button,Common.change_button]}
             onPress={() => navigation.navigate(navigations.SIGNIN_SCREEN)}
             disabled={(checkValidpass == true) || (checkValidConfirm == true) ||
               (password == '') || (confirm == '')}
           >
             <Text style={globalstyles.buttonText}>
-              {screenText.SAVE_TEXT}
+              {t('screenText.SAVE_TEXT')}
             </Text>
           </TouchableOpacity>
         </View>
@@ -111,39 +129,5 @@ export default function Change({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  //change password title styles
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-    color: color.WHITE,
-    marginTop: 30,
-  },
-  //input text box 1 styles
-  inputtext1: {
-    marginTop: 60,
-  },
-  //input text box 2 styles
-  inputtext2: {
-    paddingTop: 30,
-  },
-  //password and confirmpassword textinput styles
-  textInput: {
-    fontSize: 20,
-    height: 60,
-    borderColor: color.BLUE,
-    borderLeftWidth: 15,
-    paddingLeft: 30,
-    borderRadius: 25,
-    backgroundColor: "white",
-    width: 300,
-  },
-  //savechanges button styles
-  button: {
-    backgroundColor: color.BLUE,
-    marginTop: 60,
-    height: 60,
-    borderRadius: 25,
-    width: 300,
-    paddingTop: 10,
-  },
+  
 });

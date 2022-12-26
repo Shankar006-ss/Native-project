@@ -8,16 +8,18 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Appearance
 } from "react-native";
 import {
   color,
-  ErrorMessage,
   navigations,
-  placeholder,
-  Signup,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
+import { useTranslation } from "react-i18next";
+import { useTheme } from '@/Hooks';
+import { useEffect } from "react";
+import { setDefaultTheme } from '@/Store/Theme'
 
 export default function SignUp({ navigation }) {
   //Intialization
@@ -29,6 +31,22 @@ export default function SignUp({ navigation }) {
   const [checkValidPass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
+  const [t]=useTranslation()
+  const { Common, Fonts, Gutters} = useTheme()
+
+//Themes
+  const init = async () => {
+    const colorScheme = Appearance.getColorScheme();
+    if (colorScheme === 'dark') {
+      await setDefaultTheme({ darkMode: true });
+    } else {
+      await setDefaultTheme({ theme: 'default', darkMode: null });
+    }
+  }
+
+  useEffect(() => {
+    init()
+  })
 
   //name field validation
   const NameValid = (text) => {
@@ -70,7 +88,7 @@ export default function SignUp({ navigation }) {
   return (
     <ImageBackground
       source={require("../../../Image/background.jpg")}
-      style={globalstyles.imageBackground}
+      style={[Gutters.imageBackground, Common.imageBackground]}
       resizeMode="cover"
     >
       <View style={globalstyles.container}>
@@ -79,48 +97,48 @@ export default function SignUp({ navigation }) {
           backgroundColor="black"
           barStyle="light-content"
         />
-        <Text style={globalstyles.header}>{Signup.WELCOME}</Text>
+        <Text style={[Common.header,Fonts.header]}>{t('Signup.WELCOME')}</Text>
         <View>
           <Image
             style={globalstyles.image}
             source={require("../../../Image/music-note.png")}
           />
         </View>
-        <View style={styles.inputText}>
+        <View style={[Gutters.signup_inputText,Fonts.signup_inputText]}>
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.NAME}
+            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            placeholder={t('placeholder.NAME')}
             value={name}
             onChangeText={(text) => NameValid(text)}
             underlineColorAndroid={"transparent"}
           />
           {checkValidName ? (
-            <Text style={globalstyles.Errormsg}>{ErrorMessage.NAME}</Text>
+            <Text style={globalstyles.Errormsg}>{t('ErrorMessage.NAME')}</Text>
           ) : null}
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.EMAIL}
+            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            placeholder={t('placeholder.EMAIL')}
             value={email}
             onChangeText={(text) => checkEmail(text)}
             underlineColorAndroid={"transparent"}
           />
           {checkValidEmail ? (
-            <Text style={globalstyles.Errormsg}>{ErrorMessage.EMAIL}</Text>
+            <Text style={globalstyles.Errormsg}>{t('ErrorMessage.EMAIL')}</Text>
           ) : null}
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.PASSWORD}
+            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            placeholder={t('placeholder.PASSWORD')}
             value={password}
             onChangeText={(text) => checkPasswordValidity(text)}
             secureTextEntry={true}
             underlineColorAndroid={"transparent"}
           />
           {checkValidPass ? (
-            <Text style={globalstyles.Errormsg}>{ErrorMessage.PASSWORD}</Text>
+            <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
           ) : null}
           <TextInput
-            style={styles.textInput}
-            placeholder={placeholder.CONFIRM}
+            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            placeholder={t('placeholder.CONFIRM')}
             value={confirm}
             onChangeText={(text) => checkConfirmPasswordValidity(text)}
             secureTextEntry={true}
@@ -128,24 +146,24 @@ export default function SignUp({ navigation }) {
           />
           {checkValidConfirm ? (
             <Text style={globalstyles.Errormsg}>
-              {ErrorMessage.CONFIRMPASSWORD}
+              {t('ErrorMessage.CONFIRMPASSWORD')}
             </Text>
           ) : null}
           <TouchableOpacity
-            style={styles.button}
+            style={[Gutters.signup_button,Common.signup_button]}
             onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
             disabled={(checkValidEmail == true) || (checkValidPass == true)
               || (password == "") || (email == "") || (checkValidName == true)
               || (name == "") || (checkValidConfirm == true) || (confirm == "")}
           >
-            <Text style={globalstyles.buttonText}>{Signup.SIGNUP}
+            <Text style={globalstyles.buttonText}>{t('Signup.SIGNUP')}
             </Text>
           </TouchableOpacity>
           <Text
             onPress={() => navigation.navigate(navigations.SIGNIN_SCREEN)}
-            style={styles.footer}
+            style={[Gutters.signup_footer,Fonts.signup_footer,Common.signup_footer]}
           >
-            {Signup.SIGNIN}
+            {t('Signup.SIGNIN')}
           </Text>
         </View>
       </View>
@@ -153,44 +171,5 @@ export default function SignUp({ navigation }) {
   );
 }
 const styles = StyleSheet.create({
-  //page title styles
-  header: {
-    marginTop: 20,
-  },
-  //inputtext styles
-  inputText: {
-    marginTop: 20,
-  },
-  //name,email,password and confirmpassword textinput styles
-  textInput: {
-    color: color.BLACK,
-    fontSize: 20,
-    height: 60,
-    marginTop: 20,
-    marginBottom: 5,
-    borderColor: color.BLUE,
-    borderWidth: 1,
-    borderLeftWidth: 15,
-    paddingLeft: 30,
-    borderRadius: 25,
-    backgroundColor: color.WHITE,
-    width: 300,
-  },
-  //signup button styles
-  button: {
-    backgroundColor: color.BLUE,
-    marginTop: 20,
-    borderRadius: 25,
-    paddingTop: 10,
-    height: 60,
-  },
-  //login user text styles
-  footer: {
-    fontSize: 20,
-    color: color.WHITE,
-    fontWeight: "bold",
-    alignItems: "center",
-    textAlign: "center",
-    paddingTop: 20,
-  },
+  
 });
