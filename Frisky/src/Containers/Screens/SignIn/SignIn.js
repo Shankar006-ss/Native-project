@@ -19,6 +19,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
+import { useCreatePostMutation } from "@/Services/modules/SigninAction";
 
 
 export default function LogForm({ navigation }) {
@@ -48,6 +49,27 @@ export default function LogForm({ navigation }) {
 
   
   
+
+  //Api response
+let grandType={
+  Email:email,
+  password:password
+};
+const[CreatePost]=useCreatePostMutation(grandType);
+const onSubmit=()=>{
+  CreatePost(grandType).then((response) => {
+console.log(response)
+
+if(response.data.Message=="Login Successfully"){
+  navigation.navigate(navigations.HOME_SCREEN)
+}
+else{
+  alert("Invalid data")
+}
+  })
+}
+
+
   //check email validation
   const handleCheckEmail = (text) => {
     setEmail(text);
@@ -112,10 +134,11 @@ export default function LogForm({ navigation }) {
           </View>
           <View>
             <TouchableOpacity
-              style={[Gutters.button,Common.button]}
-              onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
-              disabled={(checkValidEmail == true) || (checkValidPass == true) ||
-                (password == "") || (email == "")}
+              style={styles.button}
+             // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+             onPress={() =>onSubmit()}
+              // disabled={(checkValidEmail == true) || (checkValidPass == true) ||
+              //   (password == "") || (email == "")}
             >
               <Text style={globalstyles.buttonText}>{t('screenText.LOG_IN')}
               </Text>

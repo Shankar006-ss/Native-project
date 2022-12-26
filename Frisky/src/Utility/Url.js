@@ -1,3 +1,3 @@
- export const LoginUrl="Login/UserLogform"
+export const SignInURL='Login/UserLogform'
 
- 
+export const SignUpURL='Signup/regform'

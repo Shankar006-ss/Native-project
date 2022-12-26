@@ -20,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
+import { useCreatePostSignUpMutation } from "@/Services/modules/SigninAction";
 
 export default function SignUp({ navigation }) {
   //Intialization
@@ -47,6 +48,35 @@ export default function SignUp({ navigation }) {
   useEffect(() => {
     init()
   })
+
+  let grand={
+    Name:name,
+    Email:email,
+    Password:password,
+    ConfirmPassword:confirm,
+  };
+  const [CreatePostSignUp] = useCreatePostSignUpMutation(grand);
+  const onSubmit = () => {
+    CreatePostSignUp(grand).then((response) => {
+      console.log(response)
+     
+      if(response.data.Message=="Invalid email"){
+        alert("Invalid email id")
+      }
+      else if(response.data.Message=="Name is notfill"){
+        alert("Name is required")
+      }
+      else if(response.data.Message=="Record SuccessFully Saved")
+      {
+        navigation.navigate(navigations.HOME_SCREEN)
+      }
+      else 
+      {
+        alert("Invalid data")
+      }
+      
+    })
+  }
 
   //name field validation
   const NameValid = (text) => {
@@ -150,11 +180,12 @@ export default function SignUp({ navigation }) {
             </Text>
           ) : null}
           <TouchableOpacity
-            style={[Gutters.signup_button,Common.signup_button]}
-            onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
-            disabled={(checkValidEmail == true) || (checkValidPass == true)
-              || (password == "") || (email == "") || (checkValidName == true)
-              || (name == "") || (checkValidConfirm == true) || (confirm == "")}
+            style={styles.button}
+            onPress={() => onSubmit()}
+          // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+          // disabled={(checkValidEmail == true) || (checkValidPass == true)
+          //   || (password == "") || (email == "") || (checkValidName == true)
+          //   || (name == "") || (checkValidConfirm == true) || (confirm == "")}
           >
             <Text style={globalstyles.buttonText}>{t('Signup.SIGNUP')}
             </Text>
