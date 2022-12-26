@@ -7,7 +7,7 @@
 export default function () {
   return {
     logo: {
-      uri: '"../../../Image/background.jpg"',
+      uri: "../../../Image/background.jpg",
     },
     
   

@@ -113,6 +113,7 @@ else{
               placeholder={t('placeholder.EMAIL')}
               value={email}
               onChangeText={handleCheckEmail}
+              underlineColorAndroid='transparent'
             />
           </View>
           <View>
@@ -126,6 +127,7 @@ else{
               placeholder={t('placeholder.PASSWORD')}
               value={password}
               onChangeText={(text) => checkPasswordValidity(text)}
+              underlineColorAndroid='transparent'
               secureTextEntry={true}
             />
             {checkValidPass ? (
@@ -134,11 +136,11 @@ else{
           </View>
           <View>
             <TouchableOpacity
-              style={styles.button}
-             // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
-             onPress={() =>onSubmit()}
-              // disabled={(checkValidEmail == true) || (checkValidPass == true) ||
-              //   (password == "") || (email == "")}
+              style={[Gutters.button,Common.button]}
+             onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+             //onPress={() =>onSubmit()}
+              disabled={(checkValidEmail == true) || (checkValidPass == true) ||
+                (password == "") || (email == "")}
             >
               <Text style={globalstyles.buttonText}>{t('screenText.LOG_IN')}
               </Text>

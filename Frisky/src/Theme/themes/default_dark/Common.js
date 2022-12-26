@@ -71,6 +71,7 @@ export default function ({ color, ...args }) {
     },
     //email textinput styles
     forgot_textInput: {
+      color: color.BLACK,
       borderColor: color.BLUE,
       backgroundColor: color.WHITE,
     },
@@ -84,6 +85,7 @@ export default function ({ color, ...args }) {
     },
     //password and confirmpassword textinput styles
     change_textInput: {
+      color: color.BLACK,
       borderColor: color.BLUE,
       backgroundColor: color.WHITE,
     },

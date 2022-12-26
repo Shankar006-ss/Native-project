@@ -40,10 +40,10 @@ export default function ({ MetricsSizes }) {
     },
     textInput: {
       height: 60,
-      backgroundColor: color.WHITE,
+    
       borderRadius: 25,
       borderLeftWidth: 15,
-      borderLeftColor: color.BLUE,
+   
       paddingTop: 10,
       paddingBottom: 10,
       paddingLeft: 30,
@@ -171,6 +171,7 @@ export default function ({ MetricsSizes }) {
     //change password title styles
   change_title: {
     marginTop: 30,
+    marginBottom:10
   },
   //input text box 1 styles
   change_inputtext1: {

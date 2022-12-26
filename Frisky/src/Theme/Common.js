@@ -15,7 +15,7 @@ export default function ({ color, ...args }) {
   return StyleSheet.create({
     //Signin page
     header: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     footer2: {
       color: color.WHITE,
@@ -34,7 +34,7 @@ export default function ({ color, ...args }) {
     },
     //Home page
     itemText: {
-      color: color.SILVER,
+      color: color.BLACK,
     },
     sectionHeader: {
       color: color.BLACK,
@@ -83,6 +83,7 @@ export default function ({ color, ...args }) {
     },
     //email textinput styles
     forgot_textInput: {
+      color: color.BLACK,
       borderColor: color.AQUA,
       backgroundColor: color.WHITE,
     },
@@ -92,10 +93,11 @@ export default function ({ color, ...args }) {
     },
     //change password title styles
     change_title: {
-      color: color.BLACK,
+      color: color.WHITE,
     },
     //password and confirmpassword textinput styles
     change_textInput: {
+      color: color.BLACK,
       borderColor: color.AQUA,
       backgroundColor: color.WHITE,
     },

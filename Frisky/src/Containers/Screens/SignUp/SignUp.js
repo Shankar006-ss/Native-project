@@ -11,7 +11,6 @@ import {
   Appearance
 } from "react-native";
 import {
-  color,
   navigations,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
@@ -180,7 +179,7 @@ export default function SignUp({ navigation }) {
             </Text>
           ) : null}
           <TouchableOpacity
-            style={styles.button}
+            style={[Gutters.signup_button,Common.signup_button]}
             onPress={() => onSubmit()}
           // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
           // disabled={(checkValidEmail == true) || (checkValidPass == true)

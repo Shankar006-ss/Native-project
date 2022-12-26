@@ -81,8 +81,8 @@ export default function Change({ navigation }) {
             source={require("../../../Image/music-note.png")}
           />
         </View>
-        <Text style={[Gutters.change_title,Common.change_title]}>{t('screenText.CHANGE_TEXT')}</Text>
-        <View style={Gutters.inputtext1}>
+        <Text style={[Gutters.change_title,Common.change_title,Fonts.change_title]}>{t('screenText.CHANGE_TEXT')}</Text>
+        <View style={[Gutters.inputtext1,Fonts.inputtext1]}>
           <TextInput
             style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
             placeholder={t('placeholder.NEW')}
@@ -96,7 +96,7 @@ export default function Change({ navigation }) {
             <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
           ) : null}
         </View>
-        <View style={Gutters.change_inputtext2}>
+        <View style={[Gutters.change_inputtext2,Fonts.change_inputtext2]}>
           <TextInput
             style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
             placeholder={t('placeholder.CONFIRM')}
