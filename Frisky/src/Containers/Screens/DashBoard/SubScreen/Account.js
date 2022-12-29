@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View,Appearance } from "react-native";
-import { color, navigations, screenText } from "@/Utility/Constants";
+import {navigations} from "@/Utility/Constants";
 import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";

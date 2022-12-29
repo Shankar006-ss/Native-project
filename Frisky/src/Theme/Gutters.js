@@ -21,34 +21,39 @@ import { color } from '@/Utility/Constants'
 export default function ({ MetricsSizes }) {
   return StyleSheet.create({
     //Signin page
+    //screen total items styles
     itemContainer: {
       marginTop: 80,
       margin: 50,
     },
+     //inputtext styles
     inputText1: {
       marginTop: 40,
     },
+    //footer text styles
     footer: {
       paddingTop: 25,
       alignItems: "center",
     },
+    //forgotpassword text styles
     footer1: {
       paddingTop: 30,
     },
+      //create a new account text styles
     footer2: {
       paddingTop: 10,
     },
+    //email and password textinput styles
     textInput: {
       height: 60,
-    
       borderRadius: 25,
       borderLeftWidth: 15,
-   
       paddingTop: 10,
       paddingBottom: 10,
       paddingLeft: 30,
       width: 300,
     },
+      //login button styles
     button: {
       alignItems: "center",
       paddingTop: 10,
@@ -64,13 +69,16 @@ export default function ({ MetricsSizes }) {
       height: 150,
       borderRadius: 10,
     },
+    //all item styles
     item: {
       margin: 10,
     },
+    //section header styles
     sectionHeader: {
       marginTop: 20,
       marginBottom: 5,
     },
+     //parent styles
     container: {
       flex: 1,
     },

@@ -3,15 +3,14 @@ import {
   Image,
   ImageBackground,
   StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  Appearance
+  Appearance,
+  Alert
 } from "react-native";
 import {
-  color,
   navigations,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
@@ -20,13 +19,15 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
+import { details } from "../SignUp/SignUp";
 
 export default function Forget({ navigation }) {
   //Intialization
   const [email, setEmail] = useState("");
   const [checkValidEmail, setCheckValidEmail] = useState(false);
-  const[t]=useTranslation()
-  const { Common, Fonts, Gutters,Images} = useTheme()
+  const [t] = useTranslation()
+  const { Common, Fonts, Gutters, Images } = useTheme();
+
 
   //Themes
   const init = async () => {
@@ -51,15 +52,29 @@ export default function Forget({ navigation }) {
       setCheckValidEmail(true);
     }
   };
+  //check validEmail
+  const checkingUser = () => {
+    let mail = details.map((details) => details.email)
+    mail.forEach((Email) => {
+      if (Email == email) {
+        Alert.alert("Details", "press OK to continue", [{
+          text: "OK", onPress: () => navigation.navigate(navigations.CHANGE_SCREEN, {
+            paramKey: email
+          })
+        }])
+      }
+    })
+  }
+
   //Rendering
   return (
     <View style={globalstyles.container}>
       <StatusBar translucent backgroundColor="black" barStyle="light-content" />
       <ImageBackground
         source={require("../../../Image/background.jpg")}
-        style={[Gutters.imageBackground, Common.imageBackground,Images.ImageBackground]}
+        style={[Gutters.imageBackground, Common.imageBackground, Images.ImageBackground]}
       >
-        <View style={[Gutters.forgot_header,Fonts.forgot_header]}>
+        <View style={[Gutters.forgot_header, Fonts.forgot_header]}>
           <View>
             <Image
               style={globalstyles.image}
@@ -67,11 +82,11 @@ export default function Forget({ navigation }) {
             />
           </View>
           <View>
-            <Text style={[Gutters.forgot_title,Fonts.forgot_title,Common.forgot_title]}>{t('screenText.FORGOT_TEXT')}</Text>
+            <Text style={[Gutters.forgot_title, Fonts.forgot_title, Common.forgot_title]}>{t('screenText.FORGOT_TEXT')}</Text>
           </View>
           <View style={Gutters.forgot_input}>
             <TextInput
-              style={[Gutters.forgot_textInput,Fonts.forgot_textInput,Common.forgot_textInput]}
+              style={[Gutters.forgot_textInput, Fonts.forgot_textInput, Common.forgot_textInput]}
               placeholder={t('placeholder.EMAIL')}
               maxLength={30}
               underlineColorAndroid={"transparent"}
@@ -82,8 +97,8 @@ export default function Forget({ navigation }) {
               <Text style={globalstyles.Errormsg}>{t('ErrorMessage.EMAIL')}</Text>
             ) : null}
             <TouchableOpacity
-              style={[Gutters.forgot_button,Fonts.forgot_button,Common.forgot_button]}
-              onPress={() => navigation.navigate(navigations.CHANGE_SCREEN)}
+              style={[Gutters.forgot_button, Fonts.forgot_button, Common.forgot_button]}
+              onPress={() => checkingUser()}
               disabled={(checkValidEmail == true) || (email == "")}
             >
               <Text style={globalstyles.buttonText}>
@@ -97,6 +112,4 @@ export default function Forget({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  
-});
+

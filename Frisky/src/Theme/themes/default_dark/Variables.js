@@ -8,7 +8,8 @@ export const color = {
   HOME: "#171926",
   BACK: "#1a1c2b",
   VIOLET:"#7B68EE",
-  AQUA:"#00BFFF"
+  AQUA:"#00BFFF",
+  SNOW:"#FFFAFA"
   
 };
 export default {

@@ -5,17 +5,21 @@ export default function ({ color, ...args }) {
     header: {
       color: color.WHITE,
     },
+    //create a new account text styles
     footer2: {
       color: color.WHITE,
     },
+     //login button styles
     button: {
       backgroundColor: color.BLUE,
     },
+    //email and password textinput styles
     textInput: {
       color: color.BLACK,
-      backgroundColor: color.WHITE,
+      backgroundColor:color.SILVER,
       borderLeftColor: color.BLUE,
     },
+    //forgotpassword text styles
     footer1: {
       color: color.WHITE,
     },
@@ -23,9 +27,11 @@ export default function ({ color, ...args }) {
     itemText: {
       color: color.SILVER,
     },
+    //section header styles
     sectionHeader: {
       color: color.WHITE,
     },
+    //parent styles
     container: {
       backgroundColor: color.HOME,
     },
@@ -47,7 +53,7 @@ export default function ({ color, ...args }) {
     signup_textInput: {
       color: color.BLACK,
       borderLeftColor: color.BLUE,
-      backgroundColor: color.WHITE,
+      backgroundColor: color.SILVER,
     },
     //signup button styles
     signup_button: {
@@ -73,7 +79,7 @@ export default function ({ color, ...args }) {
     forgot_textInput: {
       color: color.BLACK,
       borderColor: color.BLUE,
-      backgroundColor: color.WHITE,
+      backgroundColor: color.SILVER,
     },
     //send button styles
     forgot_button: {
@@ -87,7 +93,7 @@ export default function ({ color, ...args }) {
     change_textInput: {
       color: color.BLACK,
       borderColor: color.BLUE,
-      backgroundColor: color.WHITE,
+      backgroundColor: color.SILVER,
     },
     //savechanges button styles
     change_button: {

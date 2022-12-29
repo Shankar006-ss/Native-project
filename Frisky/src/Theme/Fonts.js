@@ -11,10 +11,12 @@ import { StyleSheet } from 'react-native'
 export default function ({ }) {
   return StyleSheet.create({
     //Signin page
+    //forgotpassword text styles
     footer1: {
       fontSize: 20,
       fontWeight: "bold",
     },
+    //create a new account text styles
     footer2: {
       fontSize: 20,
       fontWeight: "bold",
@@ -24,8 +26,10 @@ export default function ({ }) {
       fontSize: 28,
       textAlign: "center"
     },
+    //email and password textinput styles
     textInput: {
       fontSize: 20,
+      fontWeight:"bold"
     },
     //Home page
     itemText: {
@@ -33,6 +37,7 @@ export default function ({ }) {
       fontSize: 13,
       textAlign: "center",
     },
+    //section header styles
     sectionHeader: {
       fontWeight: "800",
       fontSize: 25,
@@ -55,6 +60,7 @@ export default function ({ }) {
     },
     //name,email,password and confirmpassword textinput styles
     signup_textInput: {
+      fontWeight:"bold",
       fontSize: 20,
     },
     //login user text styles
@@ -84,6 +90,7 @@ export default function ({ }) {
     //email textinput styles
     forgot_textInput: {
       fontSize: 20,
+      fontWeight: "bold",
     },
     //send button styles
     forgot_button: {
@@ -97,6 +104,7 @@ export default function ({ }) {
     //password and confirmpassword textinput styles
     change_textInput: {
       fontSize: 20,
+      fontWeight: "bold",
     },
 
   })

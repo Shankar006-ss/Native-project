@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import { globalstyles } from "@/Common/Style";
 import {
-  color,
   navigations,
 } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
@@ -20,15 +19,17 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
+import { details } from "../SignUp/SignUp";
 
-export default function Change({ navigation }) {
+
+export default function Change({ navigation, route }) {
   //Intialization
   const [password, setPassword] = useState("");
   const [checkValidpass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
-  const [t]=useTranslation()
-  const { Common, Fonts, Gutters} = useTheme()
+  const [t] = useTranslation()
+  const { Common, Fonts, Gutters } = useTheme()
 
   //Themes
   const init = async () => {
@@ -62,6 +63,30 @@ export default function Change({ navigation }) {
       setCheckValidConfirm(true);
     }
   };
+  // const checkingEmail = () => {
+  //   let mail = details.map((details) => details.email)
+  //   mail.forEach((Email) => {
+  //     if (Email == route.params.paramKey) {
+  //       changePassword();
+  //     }
+  //   })
+  // }
+  //Update password
+  const changePassword = () => {
+    let a = details;
+    console.log(a)
+    let index = a.findIndex((obj => obj.email == route.params.paramKey))
+    console.log(index);
+    a[index].password = password;
+    if (a[index].ConfirmPassword = confirm) {
+      navigation.navigate(navigations.SIGNIN_SCREEN)
+      console.log(a);
+    }
+  }
+  console.log(details);
+
+  
+
   //Rendering
   return (
     <ImageBackground
@@ -81,10 +106,10 @@ export default function Change({ navigation }) {
             source={require("../../../Image/music-note.png")}
           />
         </View>
-        <Text style={[Gutters.change_title,Common.change_title,Fonts.change_title]}>{t('screenText.CHANGE_TEXT')}</Text>
-        <View style={[Gutters.inputtext1,Fonts.inputtext1]}>
+        <Text style={[Gutters.change_title, Common.change_title, Fonts.change_title]}>{t('screenText.CHANGE_TEXT')}</Text>
+        <View style={[Gutters.inputtext1, Fonts.inputtext1]}>
           <TextInput
-            style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
+            style={[Gutters.change_textInput, Fonts.change_textInput, Common.change_textInput]}
             placeholder={t('placeholder.NEW')}
             underlineColorAndroid={"transparent"}
             value={password}
@@ -96,9 +121,9 @@ export default function Change({ navigation }) {
             <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
           ) : null}
         </View>
-        <View style={[Gutters.change_inputtext2,Fonts.change_inputtext2]}>
+        <View style={[Gutters.change_inputtext2, Fonts.change_inputtext2]}>
           <TextInput
-            style={[Gutters.change_textInput,Fonts.change_textInput,Common.change_textInput]}
+            style={[Gutters.change_textInput, Fonts.change_textInput, Common.change_textInput]}
             placeholder={t('placeholder.CONFIRM')}
             maxLength={16}
             onChangeText={(text) => checkConfirmPasswordValidity(text)}
@@ -113,8 +138,8 @@ export default function Change({ navigation }) {
         </View>
         <View>
           <TouchableOpacity
-            style={[Gutters.change_button,Common.change_button]}
-            onPress={() => navigation.navigate(navigations.SIGNIN_SCREEN)}
+            style={[Gutters.change_button, Common.change_button]}
+            onPress={() => changePassword()}
             disabled={(checkValidpass == true) || (checkValidConfirm == true) ||
               (password == '') || (confirm == '')}
           >
@@ -129,5 +154,5 @@ export default function Change({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  
+
 });

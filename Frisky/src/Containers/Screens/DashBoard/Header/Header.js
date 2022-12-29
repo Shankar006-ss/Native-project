@@ -1,4 +1,4 @@
-import { Image, StatusBar, StyleSheet, View, Appearance } from 'react-native'
+import { Image, StatusBar,View, Appearance } from 'react-native'
 import React from 'react'
 import { color } from '../../../../Utility/Constants'
 import { useTheme } from '@/Hooks';

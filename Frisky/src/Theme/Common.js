@@ -17,18 +17,20 @@ export default function ({ color, ...args }) {
     header: {
       color: color.WHITE,
     },
+     //create a new account text styles
     footer2: {
       color: color.WHITE,
     },
+     //login button styles
     button: {
       backgroundColor: color.AQUA,
-
     },
+    //email and password textinput styles
     textInput: {
-      color: color.BLACK,
-      backgroundColor: color.WHITE,
+      backgroundColor:color.SILVER,
       borderLeftColor: color.AQUA,
     },
+     //forgotpassword text styles
     footer1: {
       color: color.WHITE,
     },
@@ -36,9 +38,11 @@ export default function ({ color, ...args }) {
     itemText: {
       color: color.BLACK,
     },
+    //section header styles
     sectionHeader: {
       color: color.BLACK,
     },
+    //parent styles
     container: {
       backgroundColor: color.WHITE,
     },
@@ -49,17 +53,16 @@ export default function ({ color, ...args }) {
     //header styles
     Center: {
       backgroundColor: color.AQUA,
-   
     },
+    //parent styles
     back_container: {
       backgroundColor: color.AQUA
     },
     // signup style
     //name,email,password and confirmpassword textinput styles
     signup_textInput: {
-      color: color.BLACK,
-      borderLeftColor: color.AQUA,
-      backgroundColor: color.WHITE,
+     borderLeftColor: color.AQUA,
+      backgroundColor: color.SILVER,
     },
     //signup button styles
     signup_button: {
@@ -83,9 +86,8 @@ export default function ({ color, ...args }) {
     },
     //email textinput styles
     forgot_textInput: {
-      color: color.BLACK,
       borderColor: color.AQUA,
-      backgroundColor: color.WHITE,
+      backgroundColor: color.SILVER,
     },
     //send button styles
     forgot_button: {
@@ -97,9 +99,8 @@ export default function ({ color, ...args }) {
     },
     //password and confirmpassword textinput styles
     change_textInput: {
-      color: color.BLACK,
       borderColor: color.AQUA,
-      backgroundColor: color.WHITE,
+      backgroundColor: color.SILVER,
     },
     //savechanges button styles
     change_button: {

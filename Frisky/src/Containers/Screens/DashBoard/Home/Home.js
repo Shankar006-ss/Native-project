@@ -9,9 +9,8 @@ import {
   Text,
   View,
   StatusBar,
-  
 } from "react-native";
-import { color,homescreen } from "@/Utility/Constants";
+import { homescreen } from "@/Utility/Constants";
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/Hooks';
 import { setDefaultTheme } from '@/Store/Theme';
@@ -19,7 +18,7 @@ import { Appearance } from 'react-native';
 
 //Themes
 const ListItem = ({ item }) => {
-  const { Common, Fonts, Gutters} = useTheme()
+  const { Common, Fonts, Gutters } = useTheme()
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -28,11 +27,11 @@ const ListItem = ({ item }) => {
       await setDefaultTheme({ theme: 'default', darkMode: null });
     }
   }
-  
+
   useEffect(() => {
     init()
   })
-  const{t}=useTranslation()
+  const { t } = useTranslation()
   return (
     <View style={Gutters.item}>
       <Image
@@ -42,15 +41,14 @@ const ListItem = ({ item }) => {
         style={Gutters.itemPhoto}
         resizeMode="cover"
       />
-      
-      <Text style={[Fonts.itemText, Common.itemText ]}>{item.text}</Text>
+      <Text style={[Fonts.itemText, Common.itemText]}>{item.text}</Text>
     </View>
   );
 };
 
 export default () => {
-  const { Common, Fonts, Gutters} = useTheme()
-//Themes
+  const { Common, Fonts, Gutters } = useTheme()
+  //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -59,10 +57,11 @@ export default () => {
       await setDefaultTheme({ theme: 'default', darkMode: null });
     }
   }
-  
+
   useEffect(() => {
     init()
   })
+  //Rendering
   return (
     <View style={[Gutters.container, Common.container]}>
       <StatusBar style="light" />
@@ -98,7 +97,7 @@ export default () => {
 
 const SECTIONS = [
   {
-    title:homescreen.TRENDING,
+    title: homescreen.TRENDING,
     horizontal: true,
     data: [
       {
@@ -160,12 +159,10 @@ const SECTIONS = [
       },
     ],
   },
-  
-    
 
 ];
 
 const styles = StyleSheet.create({
-  
-  
+
+
 });

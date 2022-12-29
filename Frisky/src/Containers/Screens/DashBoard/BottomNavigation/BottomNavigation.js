@@ -15,8 +15,8 @@ import { Appearance } from "react-native";
 
 const Tab = createBottomTabNavigator();
 export default function NavBar() {
-  const {t}=useTranslation()
-  const { Common, Fonts, Gutters} = useTheme()
+  const { t } = useTranslation()
+  const { Common, Fonts, Gutters } = useTheme()
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -25,7 +25,7 @@ export default function NavBar() {
       await setDefaultTheme({ theme: 'default', darkMode: null });
     }
   }
-  
+
   useEffect(() => {
     init()
   })
@@ -40,9 +40,9 @@ export default function NavBar() {
         name="Home"
         component={Home}
         options={{
-          tabBarLabel:t('icons.HOME') ,
+          tabBarLabel: t('icons.HOME'),
           tabBarIcon: ({ color }) => (
-            
+
             <Image
               style={globalstyles.bottom}
               source={require("../../../../Image/home.png")}
@@ -54,7 +54,7 @@ export default function NavBar() {
         name="Search"
         component={Search}
         options={{
-          tabBarLabel: t('icons.SEARCH') ,
+          tabBarLabel: t('icons.SEARCH'),
           tabBarIcon: ({ }) => (
             <Image
               style={globalstyles.bottom}
@@ -67,7 +67,7 @@ export default function NavBar() {
         name="Library"
         component={Library}
         options={{
-          tabBarLabel: t('icons.LIBRARY') ,
+          tabBarLabel: t('icons.LIBRARY'),
           tabBarIcon: ({ }) => (
             <Image
               style={globalstyles.bottom}
@@ -80,7 +80,7 @@ export default function NavBar() {
         name="Account"
         component={Account}
         options={{
-          tabBarLabel: t('icons.ACCOUNT') ,
+          tabBarLabel: t('icons.ACCOUNT'),
           tabBarIcon: ({ }) => (
             <Image
               style={globalstyles.bottom}

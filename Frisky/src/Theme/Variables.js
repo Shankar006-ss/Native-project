@@ -30,7 +30,7 @@ export const color = {
   BACK: "#1a1c2b",
   VIOLET:"#7B68EE",
   AQUA:"#1E90FF",
-  SNOW:"#F5F5F5"
+  SNOW:"#FFFAFA"
 };
 
 export const NavigationColors = {

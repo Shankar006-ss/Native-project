@@ -3,7 +3,6 @@ import {
   Image,
   ImageBackground,
   StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -19,7 +18,24 @@ import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
-import { useCreatePostSignUpMutation } from "@/Services/modules/SigninAction";
+
+//Array 
+export var details = [{
+
+  "email": 'varshini@gmail.com',
+  "password": 'Varshini@123',
+  "ConfirmPassword": 'Varshini@123',
+  "Name": 'varshini',
+
+},
+{
+
+  "email": 'sri@gmail.com',
+  "password": 'Sri@123456',
+  "ConfirmPassword": 'Sri@123456',
+  "Name": 'sri'
+
+}]
 
 export default function SignUp({ navigation }) {
   //Intialization
@@ -31,10 +47,10 @@ export default function SignUp({ navigation }) {
   const [checkValidPass, setCheckValidPass] = useState(false);
   const [confirm, setPass] = useState("");
   const [checkValidConfirm, setCheckValidConfirm] = useState(false);
-  const [t]=useTranslation()
-  const { Common, Fonts, Gutters} = useTheme()
+  const [t] = useTranslation()
+  const { Common, Fonts, Gutters } = useTheme()
 
-//Themes
+  //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -47,35 +63,6 @@ export default function SignUp({ navigation }) {
   useEffect(() => {
     init()
   })
-
-  let grand={
-    Name:name,
-    Email:email,
-    Password:password,
-    ConfirmPassword:confirm,
-  };
-  const [CreatePostSignUp] = useCreatePostSignUpMutation(grand);
-  const onSubmit = () => {
-    CreatePostSignUp(grand).then((response) => {
-      console.log(response)
-     
-      if(response.data.Message=="Invalid email"){
-        alert("Invalid email id")
-      }
-      else if(response.data.Message=="Name is notfill"){
-        alert("Name is required")
-      }
-      else if(response.data.Message=="Record SuccessFully Saved")
-      {
-        navigation.navigate(navigations.HOME_SCREEN)
-      }
-      else 
-      {
-        alert("Invalid data")
-      }
-      
-    })
-  }
 
   //name field validation
   const NameValid = (text) => {
@@ -113,6 +100,13 @@ export default function SignUp({ navigation }) {
       setCheckValidConfirm(true);
     }
   };
+  const onhandle = () => {
+    if (details = [...details, { "Name": name, "email": email, "password": password, "ConfirmPassword": confirm }]) {
+      navigation.navigate(navigations.SIGNIN_SCREEN, { paramKey: details });
+    }
+    console.log(details);
+  }
+
   //Rendering
   return (
     <ImageBackground
@@ -126,16 +120,16 @@ export default function SignUp({ navigation }) {
           backgroundColor="black"
           barStyle="light-content"
         />
-        <Text style={[Common.header,Fonts.header]}>{t('Signup.WELCOME')}</Text>
+        <Text style={[Common.header, Fonts.header]}>{t('Signup.WELCOME')}</Text>
         <View>
           <Image
             style={globalstyles.image}
             source={require("../../../Image/music-note.png")}
           />
         </View>
-        <View style={[Gutters.signup_inputText,Fonts.signup_inputText]}>
+        <View style={[Gutters.signup_inputText, Fonts.signup_inputText]}>
           <TextInput
-            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            style={[Gutters.signup_textInput, Fonts.signup_textInput, Common.signup_textInput]}
             placeholder={t('placeholder.NAME')}
             value={name}
             onChangeText={(text) => NameValid(text)}
@@ -145,7 +139,7 @@ export default function SignUp({ navigation }) {
             <Text style={globalstyles.Errormsg}>{t('ErrorMessage.NAME')}</Text>
           ) : null}
           <TextInput
-            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            style={[Gutters.signup_textInput, Fonts.signup_textInput, Common.signup_textInput]}
             placeholder={t('placeholder.EMAIL')}
             value={email}
             onChangeText={(text) => checkEmail(text)}
@@ -155,7 +149,7 @@ export default function SignUp({ navigation }) {
             <Text style={globalstyles.Errormsg}>{t('ErrorMessage.EMAIL')}</Text>
           ) : null}
           <TextInput
-            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            style={[Gutters.signup_textInput, Fonts.signup_textInput, Common.signup_textInput]}
             placeholder={t('placeholder.PASSWORD')}
             value={password}
             onChangeText={(text) => checkPasswordValidity(text)}
@@ -166,7 +160,7 @@ export default function SignUp({ navigation }) {
             <Text style={globalstyles.Errormsg}>{t('ErrorMessage.PASSWORD')}</Text>
           ) : null}
           <TextInput
-            style={[Gutters.signup_textInput,Fonts.signup_textInput,Common.signup_textInput]}
+            style={[Gutters.signup_textInput, Fonts.signup_textInput, Common.signup_textInput]}
             placeholder={t('placeholder.CONFIRM')}
             value={confirm}
             onChangeText={(text) => checkConfirmPasswordValidity(text)}
@@ -179,19 +173,19 @@ export default function SignUp({ navigation }) {
             </Text>
           ) : null}
           <TouchableOpacity
-            style={[Gutters.signup_button,Common.signup_button]}
-            onPress={() => onSubmit()}
-          // onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
-          // disabled={(checkValidEmail == true) || (checkValidPass == true)
-          //   || (password == "") || (email == "") || (checkValidName == true)
-          //   || (name == "") || (checkValidConfirm == true) || (confirm == "")}
+            style={[Gutters.signup_button, Common.signup_button]}
+            onPress={() => onhandle()}
+            //  onPress={() => navigation.navigate(navigations.HOME_SCREEN)}
+            disabled={(checkValidEmail == true) || (checkValidPass == true)
+              || (password == "") || (email == "") || (checkValidName == true)
+              || (name == "") || (checkValidConfirm == true) || (confirm == "")}
           >
             <Text style={globalstyles.buttonText}>{t('Signup.SIGNUP')}
             </Text>
           </TouchableOpacity>
           <Text
             onPress={() => navigation.navigate(navigations.SIGNIN_SCREEN)}
-            style={[Gutters.signup_footer,Fonts.signup_footer,Common.signup_footer]}
+            style={[Gutters.signup_footer, Fonts.signup_footer, Common.signup_footer]}
           >
             {t('Signup.SIGNIN')}
           </Text>
@@ -200,6 +194,4 @@ export default function SignUp({ navigation }) {
     </ImageBackground>
   );
 }
-const styles = StyleSheet.create({
-  
-});
+
