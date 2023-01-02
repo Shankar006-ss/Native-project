@@ -9,9 +9,7 @@ import {
   View,
   Appearance
 } from "react-native";
-import {
-  navigations,
-} from "@/Utility/Constants";
+import { navigations, } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
 import { useTranslation } from "react-i18next";
@@ -43,18 +41,17 @@ export default function LogForm({ navigation }) {
     init()
   })
 
-
-  //checkvalid Email
+  //Valid Email
   const userCheck = () => {
     let mail = details.map((details) => details.email)
-    console.log(mail)
     mail.forEach((Email) => {
       if (Email == email) {
         userChecking();
       }
     })
   }
-  //checkvalid Password
+
+  //Valid Password
   const userChecking = () => {
     let pass = details.map((details) => details.password)
     pass.forEach((Password) => {
@@ -64,7 +61,7 @@ export default function LogForm({ navigation }) {
     })
   }
 
-  //check email validation
+  //Email Validation
   const handleCheckEmail = (text) => {
     setEmail(text);
     if (Validation.validateEmail(email)) {
@@ -73,7 +70,8 @@ export default function LogForm({ navigation }) {
       setCheckValidEmail(true);
     }
   };
-  //check password validation
+
+  //Password Validation
   const checkPasswordValidity = (text) => {
     setPassword(text);
     if (Validation.validatePassword(password)) {
@@ -82,6 +80,7 @@ export default function LogForm({ navigation }) {
       setCheckValidPass(true);
     }
   };
+
   //Rendering
   return (
     <View style={globalstyles.container}>
@@ -92,7 +91,6 @@ export default function LogForm({ navigation }) {
       >
         <View style={[Gutters.itemContainer]}>
           <View>
-
             <Text style={[Common.header, Fonts.header]}>{t('Signup.WELCOME')}</Text>
           </View>
           <View>

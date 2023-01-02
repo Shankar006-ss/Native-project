@@ -1,4 +1,4 @@
-import { Image, StatusBar,View, Appearance } from 'react-native'
+import { Image, StatusBar, View, Appearance } from 'react-native'
 import React from 'react'
 import { color } from '../../../../Utility/Constants'
 import { useTheme } from '@/Hooks';
@@ -7,7 +7,10 @@ import { useEffect } from "react";
 
 export default function HSB() {
 
-  const { Common, Fonts, Gutters} = useTheme()
+  //Initialization
+  const { Common, Fonts, Gutters } = useTheme()
+
+  //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -16,10 +19,12 @@ export default function HSB() {
       await setDefaultTheme({ theme: 'default', darkMode: null });
     }
   }
-  
+
   useEffect(() => {
     init()
   })
+
+  //Rendering
   return (
     <View style={Common.Over}>
       <StatusBar
@@ -27,7 +32,7 @@ export default function HSB() {
         backgroundColor={color.BLACK}
         barStyle="light-content"
       />
-      <View style={[Gutters.Center,Fonts.Center,Common.Center]}>
+      <View style={[Gutters.Center, Fonts.Center, Common.Center]}>
         <Image
           style={Gutters.Icon}
           source={require('../../../../Image/LogoMenu.png')}

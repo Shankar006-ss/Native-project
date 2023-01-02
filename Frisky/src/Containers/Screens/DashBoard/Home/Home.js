@@ -5,20 +5,21 @@ import {
   Image,
   SafeAreaView,
   SectionList,
-  StyleSheet,
   Text,
   View,
   StatusBar,
 } from "react-native";
 import { homescreen } from "@/Utility/Constants";
-import { useTranslation } from 'react-i18next';
 import { useTheme } from '@/Hooks';
 import { setDefaultTheme } from '@/Store/Theme';
 import { Appearance } from 'react-native';
 
-//Themes
+
 const ListItem = ({ item }) => {
+  //Initialization
   const { Common, Fonts, Gutters } = useTheme()
+
+  //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -31,7 +32,8 @@ const ListItem = ({ item }) => {
   useEffect(() => {
     init()
   })
-  const { t } = useTranslation()
+
+  //Rendering
   return (
     <View style={Gutters.item}>
       <Image
@@ -47,7 +49,10 @@ const ListItem = ({ item }) => {
 };
 
 export default () => {
+
+  //Initialization
   const { Common, Fonts, Gutters } = useTheme()
+
   //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
@@ -61,6 +66,7 @@ export default () => {
   useEffect(() => {
     init()
   })
+
   //Rendering
   return (
     <View style={[Gutters.container, Common.container]}>
@@ -162,7 +168,4 @@ const SECTIONS = [
 
 ];
 
-const styles = StyleSheet.create({
 
-
-});

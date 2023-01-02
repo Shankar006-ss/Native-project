@@ -78,6 +78,10 @@ export default function ({ }) {
     sub_container: {
       alignItems: "center",
     },
+    acc_button: {
+      marginTop: 100,
+       margin: 110,
+    },
     //forgotpassword screen total styles
     forgot_header: {
       alignItems: "center",

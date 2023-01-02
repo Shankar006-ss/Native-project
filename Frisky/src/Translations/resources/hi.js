@@ -42,11 +42,11 @@ export default {
         CONFIRM: "पासवर्ड की पुष्टि कीजिये",
         NEW: "नया पासवर्ड",
     },
-    icons:{
-        HOME:"घर",
-        SEARCH:"खोज",
-        LIBRARY:"पुस्तकालय",
-        ACCOUNT:"खाता"
-      },
+    icons: {
+        HOME: "घर",
+        SEARCH: "खोज",
+        LIBRARY: "पुस्तकालय",
+        ACCOUNT: "खाता"
+    },
 };
 

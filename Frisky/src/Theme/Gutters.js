@@ -20,30 +20,30 @@ import { color } from '@/Utility/Constants'
  */
 export default function ({ MetricsSizes }) {
   return StyleSheet.create({
-    //Signin page
-    //screen total items styles
+    //Signin Page
+    //Screen Total Items Styles
     itemContainer: {
       marginTop: 80,
       margin: 50,
     },
-     //inputtext styles
+    //Inputtext Styles
     inputText1: {
       marginTop: 40,
     },
-    //footer text styles
+    //Footer Text Styles
     footer: {
       paddingTop: 25,
       alignItems: "center",
     },
-    //forgotpassword text styles
+    //Forgotpassword Text Styles
     footer1: {
       paddingTop: 30,
     },
-      //create a new account text styles
+    //Create a New Account Text Styles
     footer2: {
       paddingTop: 10,
     },
-    //email and password textinput styles
+    //Email and Password Textinput Styles
     textInput: {
       height: 60,
       borderRadius: 25,
@@ -53,7 +53,7 @@ export default function ({ MetricsSizes }) {
       paddingLeft: 30,
       width: 300,
     },
-      //login button styles
+    //Login Button Styles
     button: {
       alignItems: "center",
       paddingTop: 10,
@@ -63,27 +63,27 @@ export default function ({ MetricsSizes }) {
       width: 300,
       height: 60,
     },
-    //Home page
+    //Home Page
     itemPhoto: {
       width: 150,
       height: 150,
       borderRadius: 10,
     },
-    //all item styles
+    //All Item Styles
     item: {
       margin: 10,
     },
-    //section header styles
+    //Section Header Styles
     sectionHeader: {
       marginTop: 20,
       marginBottom: 5,
     },
-     //parent styles
+    //Parent Styles
     container: {
       flex: 1,
     },
-    //header page
-    //header styles
+    //Header pPge
+    //Header Styles
     Center: {
       marginTop: 50,
       margin: 10,
@@ -93,13 +93,13 @@ export default function ({ MetricsSizes }) {
       flexDirection: 'row',
       justifyContent: "space-between",
     },
-    //logo styles
+    //Logo Styles
     Icon: {
       height: 40,
       width: 40,
       paddingRight: 10,
     },
-    //icon styles
+    //Icon Styles
     Icon1: {
       height: 30,
       width: 30,
@@ -108,16 +108,16 @@ export default function ({ MetricsSizes }) {
       height: "100%",
       width: "100%",
     },
-    //signup page
-    //page title styles
+    //Signup Page
+    //Page Title Styles
     signup_header: {
       marginTop: 20,
     },
-    //inputtext styles
+    //Inputtext Styles
     signup_inputText: {
       marginTop: 20,
     },
-    //name,email,password and confirmpassword textinput styles
+    //Name,Email,Password and Confirmpassword Textinput Styles
     signup_textInput: {
       height: 60,
       marginTop: 20,
@@ -128,37 +128,42 @@ export default function ({ MetricsSizes }) {
       borderRadius: 25,
       width: 300,
     },
-    //signup button styles
+    //Signup Button Styles
     signup_button: {
       marginTop: 20,
       borderRadius: 25,
       paddingTop: 10,
       height: 60,
     },
-    //login user text styles
+    //Login User Text Styles
     signup_footer: {
       paddingTop: 20,
     },
-    //Account styles
+    //Account Styles
     sub_container: {
       height: "100%",
       width: "100%",
       justifyContent: "center",
     },
-    //forgotpassword screen total styles
+    //Button Style 
+    acc_button: {
+      padding: 15,
+      borderRadius: 25,
+    },
+    //Forgotpassword Screen Total Styles
     forgot_header: {
       marginTop: 100,
       margin: 50,
     },
-    //forgotpassword title styles
+    //Forgotpassword Title Styles
     forgot_title: {
       marginTop: 30,
     },
-    //inputtext styles
+    //Inputtext Styles
     forgot_input: {
       margin: 10,
     },
-    //email textinput styles
+    //Email Textinput Styles
     forgot_textInput: {
       height: 60,
       marginLeft: 5,
@@ -169,42 +174,42 @@ export default function ({ MetricsSizes }) {
       marginTop: 50,
       width: 300,
     },
-    //send button styles
+    //Send Button Styles
     forgot_button: {
       padding: 10,
       marginTop: 50,
       borderRadius: 25,
       height: 60,
     },
-    //change password title styles
-  change_title: {
-    marginTop: 30,
-    marginBottom:10
-  },
-  //input text box 1 styles
-  change_inputtext1: {
-    marginTop: 60,
-  },
-  //input text box 2 styles
-  change_inputtext2: {
-    paddingTop: 30,
-  },
-  //password and confirmpassword textinput styles
-  change_textInput: {
-    height: 60,
-    borderColor: color.BLUE,
-    borderLeftWidth: 15,
-    paddingLeft: 30,
-    borderRadius: 25,
-    width: 300,
-  },
-  //savechanges button styles
-  change_button: {
-    marginTop: 60,
-    height: 60,
-    borderRadius: 25,
-    width: 300,
-    paddingTop: 10,
-  },
+    //Change Password Title Styles
+    change_title: {
+      marginTop: 30,
+      marginBottom: 30
+    },
+    //Input Text Box 1 Styles
+    change_inputtext1: {
+      marginTop: 60,
+    },
+    //Input Text Box 2 Styles
+    change_inputtext2: {
+      paddingTop: 30,
+    },
+    //Password and Confirmpassword Textinput Styles
+    change_textInput: {
+      height: 60,
+      borderColor: color.BLUE,
+      borderLeftWidth: 15,
+      paddingLeft: 30,
+      borderRadius: 25,
+      width: 300,
+    },
+    //Savechanges Button Styles
+    change_button: {
+      marginTop: 60,
+      height: 60,
+      borderRadius: 25,
+      width: 300,
+      paddingTop: 10,
+    },
   })
 }

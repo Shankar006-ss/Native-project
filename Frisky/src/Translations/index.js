@@ -25,7 +25,7 @@ i18n.use(languageDetector).use(initReactI18next).init({
       {},
     ),
   },
-  fallbackLng: ["en","ko", "hi"],
+  fallbackLng: ["en", "ko", "hi"],
 })
 
 export default i18n

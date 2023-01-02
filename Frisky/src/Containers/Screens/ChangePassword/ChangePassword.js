@@ -3,7 +3,6 @@ import {
   Image,
   ImageBackground,
   StatusBar,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -11,16 +10,13 @@ import {
   Appearance
 } from "react-native";
 import { globalstyles } from "@/Common/Style";
-import {
-  navigations,
-} from "@/Utility/Constants";
+import { navigations, } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
 import { details } from "../SignUp/SignUp";
-
 
 export default function Change({ navigation, route }) {
   //Intialization
@@ -45,7 +41,7 @@ export default function Change({ navigation, route }) {
     init()
   })
 
-  //Password field validation
+  //Password Validation
   const checkPasswordValidity = (text) => {
     setPassword(text);
     if (Validation.validatePassword(password)) {
@@ -54,7 +50,8 @@ export default function Change({ navigation, route }) {
       setCheckValidPass(true);
     }
   };
-  //Confirm password validity
+
+  //Confirm Password Validation
   const checkConfirmPasswordValidity = (text) => {
     setPass(text);
     if (password == text) {
@@ -63,29 +60,16 @@ export default function Change({ navigation, route }) {
       setCheckValidConfirm(true);
     }
   };
-  // const checkingEmail = () => {
-  //   let mail = details.map((details) => details.email)
-  //   mail.forEach((Email) => {
-  //     if (Email == route.params.paramKey) {
-  //       changePassword();
-  //     }
-  //   })
-  // }
-  //Update password
+
+  //Update Password
   const changePassword = () => {
     let a = details;
-    console.log(a)
     let index = a.findIndex((obj => obj.email == route.params.paramKey))
-    console.log(index);
     a[index].password = password;
     if (a[index].ConfirmPassword = confirm) {
       navigation.navigate(navigations.SIGNIN_SCREEN)
-      console.log(a);
     }
   }
-  console.log(details);
-
-  
 
   //Rendering
   return (
@@ -153,6 +137,3 @@ export default function Change({ navigation, route }) {
   );
 }
 
-const styles = StyleSheet.create({
-
-});

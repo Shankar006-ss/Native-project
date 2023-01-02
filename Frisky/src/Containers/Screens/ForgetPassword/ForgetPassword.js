@@ -10,9 +10,7 @@ import {
   Appearance,
   Alert
 } from "react-native";
-import {
-  navigations,
-} from "@/Utility/Constants";
+import {navigations,} from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
 import { useTranslation } from "react-i18next";
@@ -43,7 +41,7 @@ export default function Forget({ navigation }) {
     init()
   })
 
-  //Email field validation
+  //Email Validation
   const handleCheckEmail = (text) => {
     setEmail(text);
     if (Validation.validateEmail(email)) {
@@ -52,16 +50,16 @@ export default function Forget({ navigation }) {
       setCheckValidEmail(true);
     }
   };
-  //check validEmail
+
+  //ValidEmail
   const checkingUser = () => {
     let mail = details.map((details) => details.email)
     mail.forEach((Email) => {
       if (Email == email) {
-        Alert.alert("Details", "press OK to continue", [{
-          text: "OK", onPress: () => navigation.navigate(navigations.CHANGE_SCREEN, {
+         navigation.navigate(navigations.CHANGE_SCREEN, {
             paramKey: email
           })
-        }])
+
       }
     })
   }

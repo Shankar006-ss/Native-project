@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View,Appearance } from "react-native";
+import {Text, View,Appearance } from "react-native";
 import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
@@ -21,6 +21,7 @@ const Library = () => {
   useEffect(() => {
     init()
   })
+  
   return (
     <View style={[Gutters.sub_container,Fonts.sub_container,Common.sub_container]}>
       <Text style={[Fonts.buttontext,Common.buttontext]}>{t('screenText.COMING_SOON')}</Text>
@@ -28,7 +29,5 @@ const Library = () => {
   );
 };
 
-const styles = StyleSheet.create({
- });
 
 export default Library;

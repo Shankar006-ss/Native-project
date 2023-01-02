@@ -9,9 +9,7 @@ import {
   View,
   Appearance
 } from "react-native";
-import {
-  navigations,
-} from "@/Utility/Constants";
+import { navigations, } from "@/Utility/Constants";
 import Validation from "@/Utility/Validation";
 import { globalstyles } from "@/Common/Style";
 import { useTranslation } from "react-i18next";
@@ -19,7 +17,7 @@ import { useTheme } from '@/Hooks';
 import { useEffect } from "react";
 import { setDefaultTheme } from '@/Store/Theme'
 
-//Array 
+//Data
 export var details = [{
 
   "email": 'varshini@gmail.com',
@@ -64,7 +62,7 @@ export default function SignUp({ navigation }) {
     init()
   })
 
-  //name field validation
+  //Name Validation
   const NameValid = (text) => {
     setName(text);
     if (Validation.validateName(name)) {
@@ -73,7 +71,8 @@ export default function SignUp({ navigation }) {
       setCheckValidateName(true);
     }
   };
-  //Email field validation
+
+  //Email Validation
   const checkEmail = (text) => {
     setEmail(text);
     if (Validation.validateEmail(email)) {
@@ -82,7 +81,8 @@ export default function SignUp({ navigation }) {
       setCheckValidateEmail(true);
     }
   };
-  //password validation
+
+  //Password Validation
   const checkPasswordValidity = (text) => {
     setPassword(text);
     if (Validation.validatePassword(password)) {
@@ -91,7 +91,8 @@ export default function SignUp({ navigation }) {
       setCheckValidPass(true);
     }
   };
-  //Confirm password validation
+
+  //Confirm Password Validation
   const checkConfirmPasswordValidity = (text) => {
     setPass(text);
     if (password == text) {
@@ -100,11 +101,11 @@ export default function SignUp({ navigation }) {
       setCheckValidConfirm(true);
     }
   };
+
   const onhandle = () => {
     if (details = [...details, { "Name": name, "email": email, "password": password, "ConfirmPassword": confirm }]) {
       navigation.navigate(navigations.SIGNIN_SCREEN, { paramKey: details });
     }
-    console.log(details);
   }
 
   //Rendering

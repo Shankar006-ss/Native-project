@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View,Appearance } from "react-native";
+import { Text, TouchableOpacity, View,Appearance } from "react-native";
 import {navigations} from "@/Utility/Constants";
 import { useTranslation } from "react-i18next";
 import { useTheme } from '@/Hooks';
@@ -22,12 +22,14 @@ export default function Account({ navigation }) {
   useEffect(() => {
     init()
   })
+
+  //Rendering
   return (
     <View style={[Gutters.sub_container,Fonts.sub_container,Common.sub_container]}>
       <View>
         <TouchableOpacity
           onPress={() => navigation.replace(navigations.SIGNIN_SCREEN)}
-          style={styles.button}
+          style={[Gutters.acc_button,Fonts.acc_button]}
         >
           <Text style={[Fonts.buttontext,Common.buttontext]}>{t('screenText.LOG_OUT')}</Text>
         </TouchableOpacity>
@@ -36,12 +38,3 @@ export default function Account({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
- //button style 
-  button: {
-   marginTop: 100,
-    margin: 110,
-    padding: 15,
-    borderRadius: 25,
-  },
-});

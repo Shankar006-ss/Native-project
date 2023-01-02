@@ -16,7 +16,9 @@ import { Appearance } from "react-native";
 const Tab = createBottomTabNavigator();
 export default function NavBar() {
   const { t } = useTranslation()
-  const { Common, Fonts, Gutters } = useTheme()
+  const { Common} = useTheme()
+
+  //Themes
   const init = async () => {
     const colorScheme = Appearance.getColorScheme();
     if (colorScheme === 'dark') {
@@ -29,6 +31,8 @@ export default function NavBar() {
   useEffect(() => {
     init()
   })
+
+  //Rendering
   return (
     <Tab.Navigator
       screenOptions={{
@@ -41,8 +45,7 @@ export default function NavBar() {
         component={Home}
         options={{
           tabBarLabel: t('icons.HOME'),
-          tabBarIcon: ({ color }) => (
-
+          tabBarIcon: ({ }) => (
             <Image
               style={globalstyles.bottom}
               source={require("../../../../Image/home.png")}
@@ -50,7 +53,8 @@ export default function NavBar() {
           ),
         }}
       />
-      <Tab.Screen //buttom search screen navigation
+      {/* Bottom Search Screen Navigation */}
+      <Tab.Screen
         name="Search"
         component={Search}
         options={{
@@ -63,7 +67,8 @@ export default function NavBar() {
           ),
         }}
       />
-      <Tab.Screen //buttom library screen navigation
+      {/* Bottom Library Screen Navigation */}
+      <Tab.Screen
         name="Library"
         component={Library}
         options={{
@@ -76,7 +81,8 @@ export default function NavBar() {
           ),
         }}
       />
-      <Tab.Screen //buttom account screen navigation
+      {/* Bottom Account Screen Navigation */}
+      <Tab.Screen
         name="Account"
         component={Account}
         options={{
